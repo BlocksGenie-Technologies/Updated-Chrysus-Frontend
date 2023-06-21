@@ -305,7 +305,9 @@ const Staking = () => {
                                     borderRadius: "6px",
                                     color: "#846424",
                                   }}
-                                  onChange={(e) => setStakeamount(e.target.value)}
+                                  onChange={(e) =>
+                                    setStakeamount(e.target.value)
+                                  }
                                   placeholder="0.00"
                                 />
                                 {/* </div> */}
@@ -316,7 +318,11 @@ const Staking = () => {
                                   }}
                                   className="input-group-text"
                                 >
-                                  <img loading="lazy" src={Chrysus} alt="meta" />
+                                  <img
+                                    loading="lazy"
+                                    src={Chrysus}
+                                    alt="meta"
+                                  />
                                 </span>
                               </div>
                             </div>
