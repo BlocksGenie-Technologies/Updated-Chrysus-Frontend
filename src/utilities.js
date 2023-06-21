@@ -21,11 +21,7 @@ const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
 const chrysusContract = new ethers.Contract(CHRYSUS, chrysus.abi, provider);
 const loanContract = new ethers.Contract(LOAN, loan.abi, provider);
 const swapContract = new ethers.Contract(SWAP, swap.abi, provider);
-const stakingContract = new ethers.Contract(
-  STAKE,
-  staking.abi,
-  provider
-);
+const stakingContract = new ethers.Contract(STAKE, staking.abi, provider);
 
 const getGovStake = async (address) => {
   return stakingContract.getGovernanceStake(address);
@@ -85,7 +81,7 @@ const generate = async (amount, token) => {
   const collateral = token == "DAI" ? Number(D[1]) : Number(E[1]);
   const min = token == "DAI" ? 267 : 120;
   let mint = (amount * collateral) / Number(C[1]);
-  
+
   return (mint * 10000) / (ratio * min);
 };
 
@@ -175,5 +171,5 @@ export default {
   toFixedNoRounding,
   generate,
   getTotalStakeAmount,
-  getGovStake
+  getGovStake,
 };

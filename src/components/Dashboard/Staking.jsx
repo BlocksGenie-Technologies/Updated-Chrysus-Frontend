@@ -1,33 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import { H4 } from "../typography/h4";
-import {
-  Chrysus
-} from "../../assets";
+import { Chrysus } from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import {
-  updatAccount,
-} from "../../slices/web3ContractSlice";
+import { updatAccount } from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 import { ethers } from "ethers";
 import Utils from "../../utilities";
 import { MockStabilityModule, GOVERNANCE } from "../../constant";
-import StakeABI  from "../../abis/MockStabilityModule.json";
+import StakeABI from "../../abis/MockStabilityModule.json";
 import governance from "../../abis/Governance.json";
 
 const Staking = () => {
   const dispatch = useAppDispatch();
   const [Stakeamount, setStakeamount] = useState(0);
   const [TotalStake, setTotalStake] = useState(0);
-  const [ currentStakeamount, setCurrentStakeamount] = useState([]);
+  const [currentStakeamount, setCurrentStakeamount] = useState([]);
   const [cgtBalance, setCGTBalance] = useState(0);
   const [isApprove, setisApprove] = useState(false);
   const [loading, setLoading] = useState(false);
- 
 
- 
   // Account Switching
   useEffect(() => {
     if (window.ethereum) {
@@ -81,11 +75,11 @@ const Staking = () => {
     Utils.getUserBalance(address, "CGT").then(function (data) {
       setCGTBalance(Number(data) / 1e18);
     });
-    Utils.getTotalStakeAmount().then(function(data){
+    Utils.getTotalStakeAmount().then(function (data) {
       setTotalStake(Number(data) / 1e18);
     });
 
-    Utils.getGovStake(address).then(function(data){
+    Utils.getGovStake(address).then(function (data) {
       setCurrentStakeamount(Number(data.amount) / 1e18);
     });
   }, [ethereum]);
@@ -196,7 +190,9 @@ const Staking = () => {
                                     borderRadius: "6px",
                                     color: "#846424",
                                   }}
-                                  onChange={(e) => setStakeamount(e.target.value)}
+                                  onChange={(e) =>
+                                    setStakeamount(e.target.value)
+                                  }
                                   placeholder="0.00"
                                 />
                                 <span
@@ -206,7 +202,11 @@ const Staking = () => {
                                   }}
                                   className="input-group-text"
                                 >
-                                  <img loading="lazy" src={Chrysus} alt="meta" />
+                                  <img
+                                    loading="lazy"
+                                    src={Chrysus}
+                                    alt="meta"
+                                  />
                                 </span>
                               </div>
                             </div>
