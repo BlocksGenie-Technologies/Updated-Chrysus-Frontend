@@ -14,11 +14,10 @@ const SwapPopup = () => {
   const address = localStorage.getItem("accounts");
 
   useEffect(() => {
-    Utils.getUserBalance(address, "CHC").then(function(data){
+    Utils.getUserBalance(address, "CHC").then(function (data) {
       setBalance(Utils.toFixedNoRounding(Number(data) / 1e18, 3));
-    })
+    });
   });
-
 
   return (
     <Section>

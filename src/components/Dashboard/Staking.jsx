@@ -1,35 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
 import { H4 } from "../typography/h4";
-import {
-  Chrysus
-} from "../../assets";
+import { Chrysus } from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import {
-  updatAccount,
-} from "../../slices/web3ContractSlice";
+import { updatAccount } from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 import { ethers } from "ethers";
 import Utils from "../../utilities";
 import { MockStabilityModule, GOVERNANCE } from "../../constant";
-import StakeABI  from "../../abis/MockStabilityModule.json";
+import StakeABI from "../../abis/MockStabilityModule.json";
 import governance from "../../abis/Governance.json";
 
 const Staking = () => {
   const dispatch = useAppDispatch();
   const [Stakeamount, setStakeamount] = useState(0);
   const [TotalStake, setTotalStake] = useState(0);
-  const [ currentStakeamount, setCurrentStakeamount] = useState([]);
+  const [currentStakeamount, setCurrentStakeamount] = useState([]);
   const [cgtBalance, setCGTBalance] = useState(0);
   const [reward, setReward] = useState(0);
   const [isApprove, setisApprove] = useState(false);
   const [loading, setLoading] = useState(false);
   const [endTime, setEndTime] = useState(0);
- 
 
- 
   // Account Switching
   useEffect(() => {
     if (window.ethereum) {
@@ -83,18 +77,18 @@ const Staking = () => {
     Utils.getUserBalance(address, "CGT").then(function (data) {
       setCGTBalance(Number(data) / 1e18);
     });
-    Utils.getTotalStakeAmount().then(function(data){
+    Utils.getTotalStakeAmount().then(function (data) {
       setTotalStake(Number(data) / 1e18);
     });
 
-    Utils.getGovStake(address).then(function(data){
+    Utils.getGovStake(address).then(function (data) {
       setCurrentStakeamount(Number(data.amount) / 1e18);
       setEndTime(Number(data.startTime));
     });
-    Utils.getReward(address).then(function(data){
+    Utils.getReward(address).then(function (data) {
       setReward(Number(data) / 1e18);
-    })
-;  }, [ethereum]);
+    });
+  }, [ethereum]);
 
   let now = new Date();
   now = Date.parse(now) / 1000;
@@ -205,7 +199,9 @@ const Staking = () => {
                                     borderRadius: "6px",
                                     color: "#846424",
                                   }}
-                                  onChange={(e) => setStakeamount(e.target.value)}
+                                  onChange={(e) =>
+                                    setStakeamount(e.target.value)
+                                  }
                                   placeholder="0.00"
                                 />
                                 <span
@@ -215,7 +211,11 @@ const Staking = () => {
                                   }}
                                   className="input-group-text"
                                 >
-                                  <img loading="lazy" src={Chrysus} alt="meta" />
+                                  <img
+                                    loading="lazy"
+                                    src={Chrysus}
+                                    alt="meta"
+                                  />
                                 </span>
                               </div>
                             </div>
@@ -319,14 +319,22 @@ const Staking = () => {
                                       color: "#FFFFFF",
                                     }}
                                   >
-                                    { currentStakeamount > 0 && now >= timeDepends ? "Withdrawable" : "Not Withdrawable"}
+                                    {currentStakeamount > 0 &&
+                                    now >= timeDepends
+                                      ? "Withdrawable"
+                                      : "Not Withdrawable"}
                                   </div>
                                 </td>
                                 <td>
                                   <Link to={"/accounts/withdrawstake"}>
                                     <button
                                       className="badge cursor-pointer"
-                                      disabled = { currentStakeamount > 0 && now >= timeDepends ? false : true}
+                                      disabled={
+                                        currentStakeamount > 0 &&
+                                        now >= timeDepends
+                                          ? false
+                                          : true
+                                      }
                                       style={{
                                         height: "22px",
                                         width: "80px",
