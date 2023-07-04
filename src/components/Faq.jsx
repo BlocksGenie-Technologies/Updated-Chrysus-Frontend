@@ -50,17 +50,18 @@ export const FAQ = () => {
       <div className="mt-5 d-flex flex-column align-items-center justify-content-center">
         <div className="col-8">
           <div className="d-flex flex-column align-items-center justify-content-center">
-            <H4><p
-              style={{
-                fontWeight: "600",
-                fontSize: "54px",
-                color: "#846424",
-                marginTop: "30px",
-                marginBottom: "20px",
-              }}
-            >
-              FAQ's{" "}
-            </p>
+            <H4>
+              <p
+                style={{
+                  fontWeight: "600",
+                  fontSize: "54px",
+                  color: "#846424",
+                  marginTop: "30px",
+                  marginBottom: "20px",
+                }}
+              >
+                FAQ's{" "}
+              </p>
             </H4>
             <div className="mt-5" />
             <div className="w-100">
