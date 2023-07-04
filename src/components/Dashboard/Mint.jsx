@@ -4,9 +4,7 @@ import scrollreveal from "scrollreveal";
 import { MintForm } from "../mintform";
 import styles from "../../style";
 
-
 const Mint = () => {
-
   useEffect(() => {
     const sr = scrollreveal({
       origin: "bottom",
@@ -27,23 +25,22 @@ const Mint = () => {
     );
   }, []);
 
-
   return (
     <Section>
       <div className="grid min-h-screen">
         <MintForm />
       </div>
     </Section>
-  )
-}
+  );
+};
 
-export default Mint
+export default Mint;
 
 const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
-  background-color:  #121212;
+  background-color: #121212;
   .grid {
     display: flex;
     flex-direction: column;
