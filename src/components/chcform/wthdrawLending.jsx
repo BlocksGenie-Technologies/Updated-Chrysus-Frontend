@@ -70,91 +70,91 @@ export const WthdrawLending = () => {
   return (
     <Section>
       <div className="min-h-screen">
-      <div className="row w-100" style={{ borderRadius: "16px" }}>
-        <div className="col ">
-          <div
-            className="w-100 d-flex flex-column align-items-center text-center"
-            style={{
-              backgroundColor: "#211f21",
-              borderRadius: "16px",
-              color: "#846424",
-            }}
-          >
-            <div className="mt-5" />
-            <H4>Withdraw Lend CHC</H4>
-            <div className="d-flex flex-column align-items-start">
-              <P className="m-0">How much would you like to Withdraw?</P>
-              <div className="my-3" />
-              <label className="form-label text-primary">
-                Total Withdraw : {}
-                {collateral == "DAI"
-                  ? Utils.toFixedNoRounding(dai_chcBalance, 3)
-                  : Utils.toFixedNoRounding(eth_chcBalance, 3)}
-                CHC
-              </label>
-              <div
-                className="input-group"
-                style={{
-                  backgroundColor: "#1A1917",
-                  color: "#846424",
-                }}
-              >
-                <input
-                  type="text"
-                  className="form-control"
-                  style={{
-                    backgroundColor: "#1A1917",
-                    color: "#846424",
-                  }}
-                  onChange={(e) => setAmount(e.target.value)}
-                  placeholder="0.00"
-                />
-                <span
-                  style={{
-                    backgroundColor: "#1A1917",
-                    color: "#846424",
-                  }}
-                  className="input-group-text"
-                >
-                  <img loading="lazy" src={Chrysus} alt="meta" />
-                </span>
-              </div>
-              <div className="my-1" />
-            </div>
+        <div className="row w-100" style={{ borderRadius: "16px" }}>
+          <div className="col ">
             <div
-              className="w-100"
-              style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
-            />
-            <div className="w-100 d-flex flex-row justify-content-start p-3">
-              {/* Form Actions */}
-              <Link to={"/accounts/loan"}>
-                <FormActionButton color="white" outline>
-                  Back
-                </FormActionButton>
-              </Link>
-              <button
-                style={{
-                  borderRadius: "40px",
-                  background:
-                    "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
-                  // Fonts
-                  fontStyle: "normal",
-                  padding: "10px",
-                  fontWeight: "700",
-                  fontSize: "14px",
-                  lineHeight: "24px",
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                  color: "black",
-                }}
-                onClick={() => withdraw()}
-              >
-                {loading ? "Processing...." : "Continue"}
-              </button>
+              className="w-100 d-flex flex-column align-items-center text-center"
+              style={{
+                backgroundColor: "#211f21",
+                borderRadius: "16px",
+                color: "#846424",
+              }}
+            >
+              <div className="mt-5" />
+              <H4>Withdraw Lend CHC</H4>
+              <div className="d-flex flex-column align-items-start">
+                <P className="m-0">How much would you like to Withdraw?</P>
+                <div className="my-3" />
+                <label className="form-label text-primary">
+                  Total Withdraw : {}
+                  {collateral == "DAI"
+                    ? Utils.toFixedNoRounding(dai_chcBalance, 3)
+                    : Utils.toFixedNoRounding(eth_chcBalance, 3)}
+                  CHC
+                </label>
+                <div
+                  className="input-group"
+                  style={{
+                    backgroundColor: "#1A1917",
+                    color: "#846424",
+                  }}
+                >
+                  <input
+                    type="text"
+                    className="form-control"
+                    style={{
+                      backgroundColor: "#1A1917",
+                      color: "#846424",
+                    }}
+                    onChange={(e) => setAmount(e.target.value)}
+                    placeholder="0.00"
+                  />
+                  <span
+                    style={{
+                      backgroundColor: "#1A1917",
+                      color: "#846424",
+                    }}
+                    className="input-group-text"
+                  >
+                    <img loading="lazy" src={Chrysus} alt="meta" />
+                  </span>
+                </div>
+                <div className="my-1" />
+              </div>
+              <div
+                className="w-100"
+                style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
+              />
+              <div className="w-100 d-flex flex-row justify-content-start p-3">
+                {/* Form Actions */}
+                <Link to={"/accounts/loan"}>
+                  <FormActionButton color="white" outline>
+                    Back
+                  </FormActionButton>
+                </Link>
+                <button
+                  style={{
+                    borderRadius: "40px",
+                    background:
+                      "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                    // Fonts
+                    fontStyle: "normal",
+                    padding: "10px",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                    lineHeight: "24px",
+                    letterSpacing: "1px",
+                    textTransform: "uppercase",
+                    color: "black",
+                  }}
+                  onClick={() => withdraw()}
+                >
+                  {loading ? "Processing...." : "Continue"}
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </Section>
   );
