@@ -49,10 +49,9 @@ const Overview = () => {
   };
 
   useEffect(() => {
-    Utils.getTotalStakeAmount().then(function(data){
+    Utils.getTotalStakeAmount().then(function (data) {
       setTotalStake(Number(data) / 1e18);
     });
-
   }, [ethereum]);
 
   return (
