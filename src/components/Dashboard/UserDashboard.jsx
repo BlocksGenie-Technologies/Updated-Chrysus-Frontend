@@ -203,7 +203,9 @@ const UserDashboard = () => {
                     </h2>
                   </div>
                   <div className="px-2 info-group">
-                    <p className="fs-14 mb-1 text-white">COLLATERALIZATION Ratio</p>
+                    <p className="fs-14 mb-1 text-white">
+                      COLLATERALIZATION Ratio
+                    </p>
                     <h3 className="fs-20 font-w600 text-white">
                       {collateralRatio}%
                     </h3>
@@ -238,16 +240,36 @@ const UserDashboard = () => {
                   <thead>
                     <tr>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">ASSET</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          ASSET
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">BALANCE</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          BALANCE
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">USD</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          USD
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white"> </span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          {" "}
+                        </span>
                       </td>
                     </tr>
                   </thead>
