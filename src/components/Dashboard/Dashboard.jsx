@@ -20,14 +20,14 @@ export default function Dashboard() {
       {
         opacity: 0,
         interval: 100,
-      }
+      },
     );
   }, []);
   return (
     <Section>
       <div className="grid">
         {/* <NotAllow/> */}
-        <UserDashboard/>
+        <UserDashboard />
       </div>
     </Section>
   );
@@ -37,7 +37,7 @@ const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
-  background-color:  #121212;
+  background-color: #121212;
   .grid {
     display: flex;
     flex-direction: column;
