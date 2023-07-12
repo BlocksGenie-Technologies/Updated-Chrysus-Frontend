@@ -11,14 +11,13 @@ export const MintPosition = () => {
   const [position, setposition] = useState([]);
   const [feed, setFeed] = useState(0);
 
-
   useEffect(() => {
     Utils.getMintPositions().then(function (data) {
       setposition(data);
     });
 
     Utils.getFeed("CHC").then(function (data) {
-      setFeed(Utils.toFixedNoRounding((Number(data[1]) / 1e18), 2));
+      setFeed(Utils.toFixedNoRounding(Number(data[1]) / 1e18, 2));
     });
 
     Utils.getCollateralizationRatio().then(function (data) {
@@ -29,7 +28,6 @@ export const MintPosition = () => {
       setLiquidationRatio((Number(data) / 1e6).toFixed(2));
     });
   });
-
 
   return (
     <div className="min-h-screen">
@@ -79,14 +77,26 @@ export const MintPosition = () => {
                                 <tr key={index}>
                                   <td>{item.col}</td>
                                   <td>
-                                    {Utils.toFixedNoRounding(Number(item.deposited) / 1e18, 2)}
+                                    {Utils.toFixedNoRounding(
+                                      Number(item.deposited) / 1e18,
+                                      2,
+                                    )}
                                   </td>
                                   <td>
-                                    {Utils.toFixedNoRounding(Number(item.minted) / 1e18, 3)}
+                                    {Utils.toFixedNoRounding(
+                                      Number(item.minted) / 1e18,
+                                      3,
+                                    )}
                                   </td>
                                   <td>
                                     {"$" +
-                                      Utils.toFixedNoRounding(Utils.toFixedNoRounding(Number(item.minted) / 1e18, 3) * feed, 2)}
+                                      Utils.toFixedNoRounding(
+                                        Utils.toFixedNoRounding(
+                                          Number(item.minted) / 1e18,
+                                          3,
+                                        ) * feed,
+                                        2,
+                                      )}
                                   </td>
                                   <td>
                                     <Link
