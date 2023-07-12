@@ -38,7 +38,7 @@ export const Collaterals = () => {
   // const [modalShowDAI, setModalShowDAI] = useState(false);
   // const [visible, setvisible] = useState(false);
   const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
+    document.querySelectorAll("#status_wrapper tbody tr"),
   );
   const [balance, setbalance] = useState(0);
   const [daiBalance, setdaiBalance] = useState(0);
