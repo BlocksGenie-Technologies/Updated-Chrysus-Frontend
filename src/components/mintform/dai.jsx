@@ -14,8 +14,7 @@ import { ConfirmationItem } from "../confirmation_item";
 import Utils from "../../utilities";
 import ERC20 from "../../abis/ERC20.json";
 import chrysus from "../../abis/Chrysus.json";
-import { tick } from '../../assets';
-
+import { tick } from "../../assets";
 
 export const DAIDeposite = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -31,7 +30,7 @@ export const DAIDeposite = () => {
     Utils.generate(ethers.utils.parseUnits(DAIamount.toString()), "DAI").then(
       function (data) {
         setAmount(Utils.toFixedNoRounding(data, 3));
-      }
+      },
     );
   }
 
@@ -45,10 +44,10 @@ export const DAIDeposite = () => {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const _signer = provider.getSigner();
         const token = new ethers.Contract(DAI, ERC20.abi, _signer);
-        setModalShow(true)
+        setModalShow(true);
         let Txn = await token.approve(
           CHRYSUS,
-          ethers.utils.parseUnits(String(DAIamount))
+          ethers.utils.parseUnits(String(DAIamount)),
         );
         setloading(true);
         await Txn.wait();
@@ -77,7 +76,7 @@ export const DAIDeposite = () => {
         setloadings(true);
         let Txn = await contract.depositCollateral(
           DAI,
-          ethers.utils.parseUnits(String(DAIamount))
+          ethers.utils.parseUnits(String(DAIamount)),
         );
         setloading(true);
         await Txn.wait();
@@ -142,7 +141,8 @@ export const DAIDeposite = () => {
                           borderRadius: "16px",
                           // color: "#846424",
                           color: "white",
-                        }}>
+                        }}
+                      >
                         <div className="row w-150">
                           <div className="col-12">
                             <div className="d-flex flex-column align-items-center mt-4">
@@ -195,7 +195,9 @@ export const DAIDeposite = () => {
                       </div>
                     </div>
                   </>
-                ) : (<></>)}
+                ) : (
+                  <></>
+                )}
                 {isApprove === true ? (
                   <>
                     <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -206,7 +208,8 @@ export const DAIDeposite = () => {
                           borderRadius: "16px",
                           // color: "#846424",
                           color: "white",
-                        }}>
+                        }}
+                      >
                         <div className="row w-150">
                           <div className="col-12">
                             <div className="d-flex flex-column align-items-center mt-4">
@@ -222,9 +225,9 @@ export const DAIDeposite = () => {
                                 />
 
                                 <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
-
                                   <Body className="m-0 mx-3">
-                                    You have been Approved DAI. Now Submit the transaction.
+                                    You have been Approved DAI. Now Submit the
+                                    transaction.
                                   </Body>
                                 </div>
                               </div>
@@ -235,7 +238,9 @@ export const DAIDeposite = () => {
                               <div className="">
                                 <div class="loader" />
                               </div>
-                            ) : ""}
+                            ) : (
+                              ""
+                            )}
                           </div>
                           <div className="mt-2" />
                           <div
@@ -249,7 +254,11 @@ export const DAIDeposite = () => {
                           <button
                             className="text-white background-transparent  uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             type="button"
-                            style={{fontStyle: "normal", fontWeight: "700", fontSize: "12px",}}
+                            style={{
+                              fontStyle: "normal",
+                              fontWeight: "700",
+                              fontSize: "12px",
+                            }}
                             onClick={() => setModalShows(false)}
                           >
                             Close
@@ -367,7 +376,6 @@ export const DAIDeposite = () => {
                         </div>
                       </>
                     ) : null}
-
                   </>
                 ) : (
                   <>
@@ -411,9 +419,7 @@ export const DAIDeposite = () => {
                                   <div className="flex items-start justify-between">
                                     <div class="loader" />
                                   </div>
-                                  <div className="d-flex flex-column align-items-center justify-content-center col-5">
-
-                                  </div>
+                                  <div className="d-flex flex-column align-items-center justify-content-center col-5"></div>
                                 </div>
                               </div>
                               <div className="mt-2" />
@@ -424,9 +430,7 @@ export const DAIDeposite = () => {
                                 }}
                               />
                             </div>
-                            <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                            
-                            </div>
+                            <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b"></div>
                           </div>
                         </div>
                       </>

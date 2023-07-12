@@ -25,7 +25,7 @@ export const ETHDeposite = () => {
     Utils.generate(ethers.utils.parseUnits(ethamount.toString()), "ETH").then(
       function (data) {
         setAmount(Utils.toFixedNoRounding(data, 3));
-      }
+      },
     );
   });
 
@@ -46,11 +46,11 @@ export const ETHDeposite = () => {
           {
             from: _signer.address,
             value: ethers.utils.parseUnits(String(ethamount)),
-          }
+          },
         );
         await Txn.wait();
         setloading(false);
-        setModalShow(false)
+        setModalShow(false);
         // window.location.reload();
       }
     } catch (error) {
@@ -134,8 +134,7 @@ export const ETHDeposite = () => {
                             color: "white",
                           }}
                         >
-
-                          <div className="row w-150" >
+                          <div className="row w-150">
                             <div className="col-12">
                               <div className="d-flex flex-column align-items-center mt-4">
                                 <H4>Confirm Mint Details</H4>
@@ -159,8 +158,9 @@ export const ETHDeposite = () => {
                                       }}
                                     /> */}
                                     <Body className="">
-                                      Please Press Confirm Button for depositing the
-                                      Ethereum or closed the Button fro cancellation.
+                                      Please Press Confirm Button for depositing
+                                      the Ethereum or closed the Button fro
+                                      cancellation.
                                     </Body>
                                   </div>
                                 </div>
@@ -171,7 +171,9 @@ export const ETHDeposite = () => {
                                 <div className="">
                                   <div class="loader" />
                                 </div>
-                              ) : ""}
+                              ) : (
+                                ""
+                              )}
                             </div>
                             <div className="mt-2" />
                             <div
