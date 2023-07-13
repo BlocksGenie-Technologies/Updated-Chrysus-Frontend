@@ -14,7 +14,7 @@ import { Button, Util } from "reactstrap";
 import Utils from "../../utilities";
 import chrysus from "../../abis/Chrysus.json";
 import { CHRYSUS, ETH } from "../../constant";
-import { tick } from '../../assets';
+import { tick } from "../../assets";
 
 export const ETHDeposite = () => {
   const [ethamount, setethamount] = useState(0);
@@ -28,7 +28,7 @@ export const ETHDeposite = () => {
     Utils.generate(ethers.utils.parseUnits(ethamount.toString()), "ETH").then(
       function (data) {
         setAmount(Utils.toFixedNoRounding(data, 3));
-      }
+      },
     );
   });
 
@@ -49,11 +49,12 @@ export const ETHDeposite = () => {
           {
             from: _signer.address,
             value: ethers.utils.parseUnits(String(ethamount)),
-          });
+          },
+        );
         await Txn.wait();
         setrecipt(Txn.hash);
         setloading(false);
-        setModalShow(false)
+        setModalShow(false);
         setconfirm(true);
         // window.location.reload();
       }
@@ -130,7 +131,8 @@ export const ETHDeposite = () => {
                           borderRadius: "16px",
                           // color: "#846424",
                           color: "white",
-                        }}>
+                        }}
+                      >
                         <div className="row w-150">
                           <div className="col-12">
                             <div className="d-flex flex-column align-items-center mt-4">
@@ -145,7 +147,7 @@ export const ETHDeposite = () => {
                                 <div className="d-flex flex-row align-items-center justify-content-start my-3 w-30">
                                   <Body className="m-0 mx-3">
                                     Your Transaction has been Confirmed
-                                    <br/>
+                                    <br />
                                     {recipt}
                                   </Body>
                                 </div>
@@ -176,14 +178,17 @@ export const ETHDeposite = () => {
                               borderColor: "#846424",
                             }}
                             type="button"
-                            onClick={() => setconfirm(false)}>
+                            onClick={() => setconfirm(false)}
+                          >
                             ok
                           </button>
                         </div>
                       </div>
                     </div>
                   </>
-                ) : (<></>)}
+                ) : (
+                  <></>
+                )}
                 {modalShow ? (
                   <>
                     <>
@@ -202,8 +207,7 @@ export const ETHDeposite = () => {
                             color: "white",
                           }}
                         >
-
-                          <div className="row w-150" >
+                          <div className="row w-150">
                             <div className="col-12">
                               <div className="d-flex flex-column align-items-center mt-4">
                                 <H4>Confirm Mint Details</H4>
@@ -227,8 +231,9 @@ export const ETHDeposite = () => {
                                       }}
                                     /> */}
                                     <Body className="">
-                                      Please Press Confirm Button for depositing the
-                                      Ethereum or closed the Button fro cancellation.
+                                      Please Press Confirm Button for depositing
+                                      the Ethereum or closed the Button fro
+                                      cancellation.
                                     </Body>
                                   </div>
                                 </div>
@@ -239,7 +244,9 @@ export const ETHDeposite = () => {
                                 <div className="">
                                   <div class="loader" />
                                 </div>
-                              ) : ""}
+                              ) : (
+                                ""
+                              )}
                             </div>
                             <div className="mt-2" />
                             <div
