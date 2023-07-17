@@ -1,6 +1,6 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import DaoNav from '../DaoNav'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import DaoNav from "../DaoNav";
 import styles from "../../style";
 import styled from "styled-components";
 
@@ -9,23 +9,23 @@ const Governance = () => {
     <div className=" min-h-screen">
       <Section>
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`} >
+          <div className={`${styles.boxWidth}`}>
             <DaoNav />
           </div>
         </div>
         <Outlet />
       </Section>
     </div>
-  )
-}
+  );
+};
 
-export default Governance
+export default Governance;
 
 const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
-  background-color:  #121212;
+  background-color: #121212;
   .grid {
     display: flex;
     flex-direction: column;
