@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Button from 'react-bootstrap/Button';
-import { Link, useNavigate } from 'react-router-dom';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import { Link, useNavigate } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 import { MdSpaceDashboard } from "react-icons/md";
 import { RiDashboard2Fill } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
@@ -10,36 +10,52 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import { PrimaryGradientButton } from "../buttons/primary_gradient.button";
 import scrollreveal from "scrollreveal";
-import { Transferblack, logoo, LeafGold, SwapGold, UmbrellaGold, Chrysus, G, P, GI, A, DashboardIcon, HomeIcon, LoanIcon, MintIcon, SwapIcon, } from "../../assets";
+import {
+  Transferblack,
+  logoo,
+  LeafGold,
+  SwapGold,
+  UmbrellaGold,
+  Chrysus,
+  G,
+  P,
+  GI,
+  A,
+  DashboardIcon,
+  HomeIcon,
+  LoanIcon,
+  MintIcon,
+  SwapIcon,
+} from "../../assets";
 import { MintButton } from "../buttons/mint";
-import { useAppDispatch, useAppSelector } from '../../reducer/store';
+import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { WalletDropdown } from "../dropdowns/wallet_dropdown.jsx";
-import * as AiIcons from 'react-icons/ai';
-import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from "react-icons/ai";
+import * as FaIcons from "react-icons/fa";
 import SubMenu from "../dropdowns/SubMenu";
-import { IconContext } from 'react-icons/lib';
+import { IconContext } from "react-icons/lib";
 
 const MenuList = [
   {
-    title: 'Overview',
-    path: '/overview',
+    title: "Overview",
+    path: "/overview",
     icon: <AiIcons.AiFillHome />,
 
     subNav: [
       {
-        title: 'Users',
-        path: '/overview/users',
+        title: "Users",
+        path: "/overview/users",
         // icon: <IoIcons.IoIosPaper />
       },
       {
-        title: 'Revenue',
-        path: '/overview/revenue',
+        title: "Revenue",
+        path: "/overview/revenue",
         // icon: <IoIcons.IoIosPaper />
-      }
-    ]
+      },
+    ],
   },
-]
+];
 
 export default function UserSideBar() {
   const navigate = useNavigate();
@@ -49,7 +65,8 @@ export default function UserSideBar() {
   const [showSwapModel, setshowSwapModel] = useState(false);
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
-  const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3, balance, contract, accounts, socketContract, Provider } =
+    useAppSelector((state) => state.web3Connect);
   const [sidebar, setSidebar] = useState(false);
   const [visible, setvisible] = useState(false);
   const [drop, setdrop] = useState(false);
@@ -65,16 +82,15 @@ export default function UserSideBar() {
         if (addrees !== null) {
           localStorage.clear();
         }
-        navigate("/")
+        navigate("/");
       }
       if (Provider.connected) {
         Provider.disconnect();
-        web3.setProvider(null)
-        navigate("/")
+        web3.setProvider(null);
+        navigate("/");
       }
     }
   };
-
 
   useEffect(() => {
     const sr = scrollreveal({
@@ -102,7 +118,7 @@ export default function UserSideBar() {
       {
         opacity: 0,
         interval: 300,
-      }
+      },
     );
   }, []);
 
@@ -111,7 +127,9 @@ export default function UserSideBar() {
       <Section>
         <div className="top">
           <div className="brand">
-            <Link to={"/"} className="logo-dark"><img width="150" height="150" src={logoo} alt="" /></Link>
+            <Link to={"/"} className="logo-dark">
+              <img width="150" height="150" src={logoo} alt="" />
+            </Link>
           </div>
           <div className="toggle">
             {navbarState ? (
@@ -179,7 +197,6 @@ export default function UserSideBar() {
                   className={currentLink === 4 ? "active" : "none"}
                   onClick={() => setCurrentLink(4)}
                 >
-
                   <a className="cursor-pointer">
                     <Link to={"swappopup"}>
                       <img
@@ -195,9 +212,14 @@ export default function UserSideBar() {
               <Link to={"loan"}>
                 <li
                   className={currentLink === 5 ? "active" : "none"}
-                  onClick={() => setCurrentLink(5)}>
+                  onClick={() => setCurrentLink(5)}
+                >
                   <Link to={"loan"}>
-                    <img className="jumbo-button-icon" src={LoanIcon} alt="umbrella-gold" />
+                    <img
+                      className="jumbo-button-icon"
+                      src={LoanIcon}
+                      alt="umbrella-gold"
+                    />
                     <span> Loan</span>
                   </Link>
                 </li>
@@ -208,7 +230,9 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(6)}
                 >
                   <Link to={"governance"}>
-                    <img width="15" height="15"
+                    <img
+                      width="15"
+                      height="15"
                       className="jumbo-button-icon"
                       src={GI}
                       alt="umbrella-gold"
@@ -223,7 +247,9 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(7)}
                 >
                   <Link to={"mintposition"}>
-                    <img width="15" height="15"
+                    <img
+                      width="15"
+                      height="15"
                       className="jumbo-button-icon"
                       src={A}
                       alt="umbrella-gold"
@@ -238,13 +264,12 @@ export default function UserSideBar() {
         <div className="logout">
           <Link to={"/"}>
             <FiLogOut />
-            <span className="logout"
-              onClick={() => DisconnectWallet()}>Disconnect</span>
+            <span className="logout" onClick={() => DisconnectWallet()}>
+              Disconnect
+            </span>
           </Link>
         </div>
       </Section>
-
-
 
       <ResponsiveNav state={navbarState} className={navbarState ? "show" : ""}>
         <div className="responsive__links">
@@ -252,7 +277,8 @@ export default function UserSideBar() {
             <Link to={"/accounts"}>
               <li
                 className={currentLink === 1 ? "active" : "none"}
-                onClick={() => setCurrentLink(1)} >
+                onClick={() => setCurrentLink(1)}
+              >
                 <Link to={"/accounts"}>
                   {/* <MdSpaceDashboard /> */}
                   <img
@@ -301,8 +327,9 @@ export default function UserSideBar() {
                 onClick={() => setCurrentLink(4)}
               >
                 <Link to={"swappopup"}>
-                  <a className="cursor-pointer"
-                  // onClick={() => setshowSwapModel(true)}
+                  <a
+                    className="cursor-pointer"
+                    // onClick={() => setshowSwapModel(true)}
                   >
                     <img
                       className="jumbo-button-icon"
@@ -363,8 +390,9 @@ export default function UserSideBar() {
             <li className="logout">
               <Link to={"/"}>
                 <FiLogOut />
-                <span className="logout"
-                  onClick={() => DisconnectWallet()}>Disconnect</span>
+                <span className="logout" onClick={() => DisconnectWallet()}>
+                  Disconnect
+                </span>
               </Link>
             </li>
           </ul>
@@ -373,7 +401,6 @@ export default function UserSideBar() {
     </>
   );
 }
-
 
 const Nav = styled.div`
   background: #15171c;
@@ -400,7 +427,7 @@ const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0;
-  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
 `;
@@ -409,16 +436,12 @@ const SidebarWrap = styled.div`
   width: 100%;
 `;
 
-
-
-
 const Section = styled.section`
   position: fixed;
   z-index: 99;
   left: 0;
 
-  
-  height:100vh;
+  height: 100vh;
   overflow-y: scroll;
 
   background-color: #211f21;
@@ -475,7 +498,7 @@ const Section = styled.section`
             text-decoration: none;
             display: flex;
             gap: 1rem;
-            color:white;
+            color: white;
           }
         }
         .active {
