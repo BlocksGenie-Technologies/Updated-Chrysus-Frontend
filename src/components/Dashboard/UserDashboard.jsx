@@ -44,7 +44,7 @@ const UserDashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const dispatch = useAppDispatch();
   const { web3, contract, accounts, socketContract, Provider } = useAppSelector(
-    (state) => state.web3Connect
+    (state) => state.web3Connect,
   );
   const [usdprice, setusdprice] = useState();
   const [collateralRatio, setcollateralRatio] = useState(null);
@@ -56,7 +56,7 @@ const UserDashboard = () => {
   const [chcFeed, setChcFeed] = useState(0);
   const [ethFeed, setEthFeed] = useState(0);
   const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
+    document.querySelectorAll("#status_wrapper tbody tr"),
   );
   const [cdp, setCDP] = useState(0);
   const sort = 6;
@@ -184,8 +184,7 @@ const UserDashboard = () => {
             }}
           >
             <div className="mt-2 text-center">
-              <H4>
-              </H4>
+              <H4></H4>
             </div>
             {/* <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
               <div className="me-auto">
@@ -237,16 +236,36 @@ const UserDashboard = () => {
                   <thead>
                     <tr>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">ASSET</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          ASSET
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">BALANCE</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          BALANCE
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">USD</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          USD
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white"> </span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          {" "}
+                        </span>
                       </td>
                     </tr>
                   </thead>
@@ -499,7 +518,7 @@ const UserDashboard = () => {
                                     Action
                                   </span>
                                 </Link>
-                                <Link >
+                                <Link>
                                   <span
                                     className="badge cursor-pointer"
                                     style={{
@@ -545,7 +564,7 @@ const UserDashboard = () => {
                                     Action
                                   </span>
                                 </Link>
-                                <Link >
+                                <Link>
                                   <span
                                     className="badge cursor-pointer"
                                     style={{

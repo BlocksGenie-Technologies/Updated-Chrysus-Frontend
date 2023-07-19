@@ -18,7 +18,7 @@ import Utils from "../../utilities";
 export const Lending = () => {
   const [visible, setvisible] = useState(false);
   const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
+    document.querySelectorAll("#status_wrapper tbody tr"),
   );
   const sort = 6;
   const activePag = useRef(0);
@@ -54,13 +54,13 @@ export const Lending = () => {
 
     Utils.getLendPosition(addrees, "DAI").then(function (data) {
       setDai_chcBalance(
-        Utils.toFixedNoRounding(Number(data.lendAmount) / 1e18, 3)
+        Utils.toFixedNoRounding(Number(data.lendAmount) / 1e18, 3),
       );
     });
 
     Utils.getLendPosition(addrees, "ETH").then(function (data) {
       setEth_chcBalance(
-        Utils.toFixedNoRounding(Number(data.lendAmount) / 1e18, 3)
+        Utils.toFixedNoRounding(Number(data.lendAmount) / 1e18, 3),
       );
     });
 
@@ -129,23 +129,28 @@ export const Lending = () => {
   const Bat = [
     {
       Collateral: "CHC/BAT",
-    }]
+    },
+  ];
   const Usdt = [
     {
       Collateral: "CHC/USDT",
-    }]
+    },
+  ];
   const Usdc = [
     {
       Collateral: "CHC/USDC",
-    }]
+    },
+  ];
   const Uni = [
     {
       Collateral: "CHC/UNI",
-    }]
-    const Wbtc = [
-      {
-        Collateral: "CHC/WBTC",
-      }]
+    },
+  ];
+  const Wbtc = [
+    {
+      Collateral: "CHC/WBTC",
+    },
+  ];
 
   return (
     <>
@@ -306,7 +311,7 @@ export const Lending = () => {
                                   </td>
                                 </tr>
                               ))}
-                               {Bat.map((item, index) => (
+                              {Bat.map((item, index) => (
                                 <tr key={index}>
                                   <td>{item.Collateral}</td>
                                   <td>0</td>
@@ -363,7 +368,7 @@ export const Lending = () => {
                                   </td>
                                 </tr>
                               ))}
-                                {Usdt.map((item, index) => (
+                              {Usdt.map((item, index) => (
                                 <tr key={index}>
                                   <td>{item.Collateral}</td>
                                   <td>0</td>
@@ -417,7 +422,7 @@ export const Lending = () => {
                                   </td>
                                 </tr>
                               ))}
-                                {Usdc.map((item, index) => (
+                              {Usdc.map((item, index) => (
                                 <tr key={index}>
                                   <td>{item.Collateral}</td>
                                   <td>0</td>
@@ -471,7 +476,7 @@ export const Lending = () => {
                                   </td>
                                 </tr>
                               ))}
-                                {Wbtc.map((item, index) => (
+                              {Wbtc.map((item, index) => (
                                 <tr key={index}>
                                   <td>{item.Collateral}</td>
                                   <td>0</td>
@@ -525,7 +530,7 @@ export const Lending = () => {
                                   </td>
                                 </tr>
                               ))}
-                                {Uni.map((item, index) => (
+                              {Uni.map((item, index) => (
                                 <tr key={index}>
                                   <td>{item.Collateral}</td>
                                   <td>0</td>
