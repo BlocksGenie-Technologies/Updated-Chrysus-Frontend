@@ -44,7 +44,7 @@ const UserDashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const dispatch = useAppDispatch();
   const { web3, contract, accounts, socketContract, Provider } = useAppSelector(
-    (state) => state.web3Connect
+    (state) => state.web3Connect,
   );
   const [usdprice, setusdprice] = useState();
   const [collateralRatio, setcollateralRatio] = useState(null);
@@ -56,7 +56,7 @@ const UserDashboard = () => {
   const [chcFeed, setChcFeed] = useState(0);
   const [ethFeed, setEthFeed] = useState(0);
   const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
+    document.querySelectorAll("#status_wrapper tbody tr"),
   );
   const [cdp, setCDP] = useState(0);
   const sort = 6;
@@ -184,8 +184,7 @@ const UserDashboard = () => {
             }}
           >
             <div className="mt-2 text-center">
-              <H4>
-              </H4>
+              <H4></H4>
             </div>
             {/* <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
               <div className="me-auto">
@@ -237,16 +236,36 @@ const UserDashboard = () => {
                   <thead>
                     <tr>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">ASSET</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          ASSET
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">BALANCE</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          BALANCE
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">USD</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          USD
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white"> </span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          {" "}
+                        </span>
                       </td>
                     </tr>
                   </thead>
@@ -441,53 +460,52 @@ const UserDashboard = () => {
           </div>
         </div>
         <div className="col-xl-12">
-            <div
-              className="card"
-              style={{
-                backgroundColor: "#211f21",
-                borderRadius: "16px",
-                color: "#846424",
-              }}
-            >
-              <Tab.Container defaultActiveKey="All">
-                <div className="card-header border-0 pb-2 flex-wrap">
-                  <h3 className="">Recent Activity</h3>
-                </div>
-                <div className="card-body pt-0 pb-0">
-                  <Tab.Content>
-                    <Tab.Pane eventKey="All">
-                      <div className="table-responsive dataTabletrade ">
-                        <div
-                          id="status_wrapper"
-                          className="dataTables_wrapper no-footer"
+          <div
+            className="card"
+            style={{
+              backgroundColor: "#211f21",
+              borderRadius: "16px",
+              color: "#846424",
+            }}
+          >
+            <Tab.Container defaultActiveKey="All">
+              <div className="card-header border-0 pb-2 flex-wrap">
+                <h3 className="">Recent Activity</h3>
+              </div>
+              <div className="card-body pt-0 pb-0">
+                <Tab.Content>
+                  <Tab.Pane eventKey="All">
+                    <div className="table-responsive dataTabletrade ">
+                      <div
+                        id="status_wrapper"
+                        className="dataTables_wrapper no-footer"
+                      >
+                        <table
+                          id="example"
+                          className="table display dataTable no-footer"
+                          style={{ minWidth: "845px" }}
                         >
-                          <table
-                            id="example"
-                            className="table display dataTable no-footer"
-                            style={{ minWidth: "845px" }}
-                          >
-                            <thead>
-                            </thead>
-                            <tbody className="text-white">
-                              <tr>
-                                <td>5-10-2023</td>
-                                <td>Minted some CHC</td>
-                              </tr>
-                              <tr>
-                                <td>19-10-2023</td>
-                                <td>Stack 100 CGT</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                          <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3" />
-                        </div>
+                          <thead></thead>
+                          <tbody className="text-white">
+                            <tr>
+                              <td>5-10-2023</td>
+                              <td>Minted some CHC</td>
+                            </tr>
+                            <tr>
+                              <td>19-10-2023</td>
+                              <td>Stack 100 CGT</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3" />
                       </div>
-                    </Tab.Pane>
-                  </Tab.Content>
-                </div>
-              </Tab.Container>
-            </div>
+                    </div>
+                  </Tab.Pane>
+                </Tab.Content>
+              </div>
+            </Tab.Container>
           </div>
+        </div>
       </div>
     </div>
   );
