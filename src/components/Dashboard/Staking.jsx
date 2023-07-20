@@ -1,14 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { H4 } from "../typography/h4";
 import { Body } from "../typography";
-import {
-  Chrysus
-} from "../../assets";
+import { Chrysus } from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  updatAccount,
-} from "../../slices/web3ContractSlice";
+import { updatAccount } from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
@@ -17,7 +13,7 @@ import Utils from "../../utilities";
 import { MockStabilityModule, GOVERNANCE } from "../../constant";
 import StakeABI from "../../abis/MockStabilityModule.json";
 import governance from "../../abis/Governance.json";
-import { tick } from '../../assets';
+import { tick } from "../../assets";
 
 const Staking = () => {
   const dispatch = useAppDispatch();
@@ -33,7 +29,6 @@ const Staking = () => {
   const [recipt, setrecipt] = useState();
   const [confirm, setconfirm] = useState(false);
   const [rout, setrout] = useState(false);
-
 
   // Account Switching
   useEffect(() => {
@@ -57,22 +52,22 @@ const Staking = () => {
         const Stakecontract = new ethers.Contract(
           MockStabilityModule,
           StakeABI.abi,
-          _signer
+          _signer,
         );
         const GovernanceContract = new ethers.Contract(
           GOVERNANCE,
           governance.abi,
-          _signer
+          _signer,
         );
         setLoading(true);
         let Txn = await GovernanceContract.approve(
           MockStabilityModule,
-          ethers.utils.parseUnits(String(Stakeamount))
+          ethers.utils.parseUnits(String(Stakeamount)),
         );
         // setLoading(true);
         await Txn.wait();
         Txn = await Stakecontract.stake(
-          ethers.utils.parseUnits(String(Stakeamount))
+          ethers.utils.parseUnits(String(Stakeamount)),
         );
         await Txn.wait();
         setLoading(false);
@@ -90,10 +85,9 @@ const Staking = () => {
 
   useEffect(() => {
     if (rout == true) {
-      navigate("/accounts")
+      navigate("/accounts");
     }
   });
-
 
   useEffect(() => {
     Utils.getUserBalance(address, "CGT").then(function (data) {
@@ -109,8 +103,7 @@ const Staking = () => {
     });
     Utils.getReward(address).then(function (data) {
       setReward(Number(data) / 1e18);
-    })
-      ;
+    });
   }, [ethereum]);
 
   let now = new Date();
@@ -206,7 +199,7 @@ const Staking = () => {
                       <div
                         style={{
                           marginLeft: "250px",
-                          marginRight: "250px"
+                          marginRight: "250px",
                         }}
                       >
                         <div className="form-group mr-5 ml-5">
@@ -275,7 +268,8 @@ const Staking = () => {
                     borderRadius: "16px",
                     // color: "#846424",
                     color: "white",
-                  }}>
+                  }}
+                >
                   <div className="row w-150">
                     <div className="col-12">
                       <div className="d-flex flex-column align-items-center mt-4">
@@ -291,9 +285,7 @@ const Staking = () => {
                             <Body className="m-0 mx-3 ">
                               Your Transaction has been Confirmed
                               <br />
-                              <div className="mr-2 ml-2">
-                                {recipt}
-                              </div>
+                              <div className="mr-2 ml-2">{recipt}</div>
                             </Body>
                           </div>
                         </div>
@@ -302,8 +294,7 @@ const Staking = () => {
                     <div className="mt-2" />
                     <div
                       style={{
-                        borderBottom:
-                          "1px solid rgba(255, 255, 255, 0.1)",
+                        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
                       }}
                     />
                   </div>
@@ -324,14 +315,17 @@ const Staking = () => {
                       }}
                       type="button"
                       // onClick={() =>setrout(true)} &&
-                      onClick={() => setconfirm(false) & setrout(true)}>
+                      onClick={() => setconfirm(false) & setrout(true)}
+                    >
                       ok
                     </button>
                   </div>
                 </div>
               </div>
             </>
-          ) : (<></>)}
+          ) : (
+            <></>
+          )}
           {loading === true ? (
             <>
               <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -342,7 +336,8 @@ const Staking = () => {
                     borderRadius: "16px",
                     // color: "#846424",
                     color: "white",
-                  }}>
+                  }}
+                >
                   <div className="row w-150">
                     <div className="col-12">
                       <div className="d-flex flex-column align-items-center mt-4">
@@ -361,17 +356,17 @@ const Staking = () => {
                     <div className="mt-2" />
                     <div
                       style={{
-                        borderBottom:
-                          "1px solid rgba(255, 255, 255, 0.1)",
+                        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
                       }}
                     />
                   </div>
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  </div>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b"></div>
                 </div>
               </div>
             </>
-          ) : (<></>)}
+          ) : (
+            <></>
+          )}
 
           <div className="col-xl-12">
             <div
@@ -445,14 +440,22 @@ const Staking = () => {
                                       color: "#FFFFFF",
                                     }}
                                   >
-                                    {currentStakeamount > 0 && now >= timeDepends ? "Withdrawable" : "Not Withdrawable"}
+                                    {currentStakeamount > 0 &&
+                                    now >= timeDepends
+                                      ? "Withdrawable"
+                                      : "Not Withdrawable"}
                                   </div>
                                 </td>
                                 <td>
                                   <Link to={"/accounts/withdrawstake"}>
                                     <button
                                       className="badge cursor-pointer"
-                                      disabled={currentStakeamount > 0 && now >= timeDepends ? false : true}
+                                      disabled={
+                                        currentStakeamount > 0 &&
+                                        now >= timeDepends
+                                          ? false
+                                          : true
+                                      }
                                       style={{
                                         height: "22px",
                                         width: "80px",

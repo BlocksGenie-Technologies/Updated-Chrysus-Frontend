@@ -13,7 +13,7 @@ import { ethers } from "ethers";
 import loan from "../../abis/MockLending.json";
 import chrysus from "../../abis/Chrysus.json";
 import styled from "styled-components";
-import { tick } from '../../assets';
+import { tick } from "../../assets";
 
 export const Lend = () => {
   const navigate = useNavigate();
@@ -46,21 +46,21 @@ export const Lend = () => {
         const chrysusContract = new ethers.Contract(
           CHRYSUS,
           chrysus.abi,
-          _signer
+          _signer,
         );
 
         const _collateral = collateral == "DAI" ? DAI : ETH;
         setLoading(true);
         let Txn = await chrysusContract.approve(
           LOAN,
-          ethers.utils.parseUnits(String(amount))
+          ethers.utils.parseUnits(String(amount)),
         );
         // setLoading(true);
         await Txn.wait();
 
         Txn = await loanContract.lend(
           ethers.utils.parseUnits(String(amount)),
-          _collateral
+          _collateral,
         );
         await Txn.wait();
         setLoading(false);
@@ -76,7 +76,7 @@ export const Lend = () => {
   };
   useEffect(() => {
     if (rout == true) {
-      navigate("/accounts")
+      navigate("/accounts");
     }
   });
 
@@ -171,7 +171,8 @@ export const Lend = () => {
                           borderRadius: "16px",
                           // color: "#846424",
                           color: "white",
-                        }}>
+                        }}
+                      >
                         <div className="row w-150">
                           <div className="col-12">
                             <div className="d-flex flex-column align-items-center mt-4">
@@ -195,12 +196,13 @@ export const Lend = () => {
                             }}
                           />
                         </div>
-                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                        </div>
+                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b"></div>
                       </div>
                     </div>
                   </>
-                ) : (<></>)}
+                ) : (
+                  <></>
+                )}
 
                 {confirm === true ? (
                   <>
@@ -212,7 +214,8 @@ export const Lend = () => {
                           borderRadius: "16px",
                           // color: "#846424",
                           color: "white",
-                        }}>
+                        }}
+                      >
                         <div className="row w-150">
                           <div className="col-12">
                             <div className="d-flex flex-column align-items-center mt-4">
@@ -228,9 +231,7 @@ export const Lend = () => {
                                   <Body className="m-0 mx-3 ">
                                     Your Transaction has been Confirmed
                                     <br />
-                                    <div className="mr-2 ml-2">
-                                      {recipt}
-                                    </div>
+                                    <div className="mr-2 ml-2">{recipt}</div>
                                   </Body>
                                 </div>
                               </div>
@@ -260,14 +261,17 @@ export const Lend = () => {
                               borderColor: "#846424",
                             }}
                             type="button"
-                            onClick={() => setconfirm(false) & setrout(true)}>
+                            onClick={() => setconfirm(false) & setrout(true)}
+                          >
                             ok
                           </button>
                         </div>
                       </div>
                     </div>
                   </>
-                ) : (<></>)}
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </div>
