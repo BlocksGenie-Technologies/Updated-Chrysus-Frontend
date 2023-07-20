@@ -17,7 +17,7 @@ import Utils from "../../utilities";
 export const Borrow = () => {
   const [visible, setvisible] = useState(false);
   const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
+    document.querySelectorAll("#status_wrapper tbody tr"),
   );
   const sort = 6;
   const activePag = useRef(0);
@@ -48,14 +48,14 @@ export const Borrow = () => {
   useEffect(() => {
     Utils.getLendPosition(addrees, "DAI").then(function (data) {
       setDai_chcBalance(
-        Utils.toFixedNoRounding(Number(data.borrowedAmount) / 1e18, 3)
+        Utils.toFixedNoRounding(Number(data.borrowedAmount) / 1e18, 3),
       );
       setDai_Lend(Utils.toFixedNoRounding(Number(data.lendAmount) / 1e18, 3));
     });
 
     Utils.getLendPosition(addrees, "ETH").then(function (data) {
       setEth_chcBalance(
-        Utils.toFixedNoRounding(Number(data.borrowedAmount) / 1e18, 3)
+        Utils.toFixedNoRounding(Number(data.borrowedAmount) / 1e18, 3),
       );
       setEth_Lend(Utils.toFixedNoRounding(Number(data.lendAmount) / 1e18, 3));
     });
@@ -123,23 +123,28 @@ export const Borrow = () => {
   const Bat = [
     {
       Collateral: "CHC/BAT",
-    }]
+    },
+  ];
   const Usdt = [
     {
       Collateral: "CHC/USDT",
-    }]
+    },
+  ];
   const Usdc = [
     {
       Collateral: "CHC/USDC",
-    }]
+    },
+  ];
   const Uni = [
     {
       Collateral: "CHC/UNI",
-    }]
+    },
+  ];
   const Wbtc = [
     {
       Collateral: "CHC/WBTC",
-    }]
+    },
+  ];
 
   return (
     <>
