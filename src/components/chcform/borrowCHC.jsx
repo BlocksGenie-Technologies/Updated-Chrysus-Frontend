@@ -12,7 +12,7 @@ import { ethers } from "ethers";
 import ERC20 from "../../abis/ERC20.json";
 import loan from "../../abis/MockLending.json";
 import { DAI, ETH, LOAN } from "../../constant";
-import { tick } from '../../assets';
+import { tick } from "../../assets";
 
 export const BorrowCHC = () => {
   const navigate = useNavigate();
@@ -46,13 +46,13 @@ export const BorrowCHC = () => {
   if (amount !== null) {
     const interestAmount = (amount * interestRate) / 1e18;
     const totalAmount = Number(amount) + Number(interestAmount);
-    Utils.collateralAmount(totalAmount.toString(), collateral).then(function (
-      data
-    ) {
-      collateral == "DAI"
-        ? setCollateralAmount(Utils.toFixedNoRounding(Number(data) * 1e7, 3))
-        : setCollateralAmount(Utils.toFixedNoRounding(Number(data), 3));
-    });
+    Utils.collateralAmount(totalAmount.toString(), collateral).then(
+      function (data) {
+        collateral == "DAI"
+          ? setCollateralAmount(Utils.toFixedNoRounding(Number(data) * 1e7, 3))
+          : setCollateralAmount(Utils.toFixedNoRounding(Number(data), 3));
+      },
+    );
   }
 
   const borrow = async () => {
@@ -72,7 +72,7 @@ export const BorrowCHC = () => {
         if (collateral == "DAI") {
           let Txn = await token.approve(
             LOAN,
-            ethers.utils.parseUnits(String(collateralAmount))
+            ethers.utils.parseUnits(String(collateralAmount)),
           );
           setLoading(true);
           await Txn.wait();
@@ -85,9 +85,8 @@ export const BorrowCHC = () => {
             {
               from: _signer.address,
               value: ethers.utils.parseUnits(String(amount)),
-            }
+            },
           );
-
 
           await Txn.wait();
           // setLoading(false);
@@ -96,7 +95,7 @@ export const BorrowCHC = () => {
 
         let Txn = await loanContract.borrow(
           ethers.utils.parseUnits(String(amount)),
-          _collateral
+          _collateral,
         );
         //setLoading(true);
         await Txn.wait();
@@ -113,10 +112,10 @@ export const BorrowCHC = () => {
   };
   useEffect(() => {
     if (rout == true) {
-      navigate("/accounts")
+      navigate("/accounts");
     }
   });
-  
+
   return (
     <div className="row w-100" style={{ borderRadius: "16px" }}>
       <div className="col ">
@@ -134,7 +133,7 @@ export const BorrowCHC = () => {
             <P className="m-0">How much would you like to Borrow?</P>
             <div className="my-3" />
             <label className="form-label text-primary">
-              Avaliable to Borrow : { }
+              Avaliable to Borrow : {}
               {collateral == "DAI" ? dai_lend : eth_lend}CHC
             </label>
             <div
@@ -207,7 +206,8 @@ export const BorrowCHC = () => {
                     borderRadius: "16px",
                     // color: "#846424",
                     color: "white",
-                  }}>
+                  }}
+                >
                   <div className="row w-150">
                     <div className="col-12">
                       <div className="d-flex flex-column align-items-center mt-4">
@@ -226,17 +226,17 @@ export const BorrowCHC = () => {
                     <div className="mt-2" />
                     <div
                       style={{
-                        borderBottom:
-                          "1px solid rgba(255, 255, 255, 0.1)",
+                        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
                       }}
                     />
                   </div>
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  </div>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b"></div>
                 </div>
               </div>
             </>
-          ) : (<></>)}
+          ) : (
+            <></>
+          )}
 
           {confirm === true ? (
             <>
@@ -248,7 +248,8 @@ export const BorrowCHC = () => {
                     borderRadius: "16px",
                     // color: "#846424",
                     color: "white",
-                  }}>
+                  }}
+                >
                   <div className="row w-150">
                     <div className="col-12">
                       <div className="d-flex flex-column align-items-center mt-4">
@@ -264,9 +265,7 @@ export const BorrowCHC = () => {
                             <Body className="m-0 mx-3 ">
                               Your Transaction has been Confirmed
                               <br />
-                              <div className="mr-2 ml-2">
-                                {recipt}
-                              </div>
+                              <div className="mr-2 ml-2">{recipt}</div>
                             </Body>
                           </div>
                         </div>
@@ -275,8 +274,7 @@ export const BorrowCHC = () => {
                     <div className="mt-2" />
                     <div
                       style={{
-                        borderBottom:
-                          "1px solid rgba(255, 255, 255, 0.1)",
+                        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
                       }}
                     />
                   </div>
@@ -296,14 +294,17 @@ export const BorrowCHC = () => {
                         borderColor: "#846424",
                       }}
                       type="button"
-                      onClick={() => setconfirm(false) & setrout(true)}>
+                      onClick={() => setconfirm(false) & setrout(true)}
+                    >
                       ok
                     </button>
                   </div>
                 </div>
               </div>
             </>
-          ) : (<></>)}
+          ) : (
+            <></>
+          )}
           <div
             className="w-100"
             style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
