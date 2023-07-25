@@ -7,9 +7,9 @@ import staking from "./abis/MockStabilityModule.json";
 import mockOracle from "./abis/MockOracle.json";
 import { DAI, ETH } from "./constant";
 
-const PROVIDER ="https://rpc.sepolia.org";
+const PROVIDER = "https://rpc.sepolia.org";
 const LOAN = "0x83abAf05B065B1aD34919e5E121476670E796e3a";
-const CHRYSUS ="0x5Acf4e52FDB68b4928a215Af05771c23A7663CBF";
+const CHRYSUS = "0x5Acf4e52FDB68b4928a215Af05771c23A7663CBF";
 const GOVERNANCE = "0xAA49841d3a52BbD0c62de8D0Cba1e30e988749ec";
 const SWAP = "0x7867749ff1f167cB480dC985852266Fe14581965";
 const oracleDAI = "0x14866185B1962B63C3Ea9E03Bc1da838bab34C19";
@@ -21,11 +21,7 @@ const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
 const chrysusContract = new ethers.Contract(CHRYSUS, chrysus.abi, provider);
 const loanContract = new ethers.Contract(LOAN, loan.abi, provider);
 const swapContract = new ethers.Contract(SWAP, swap.abi, provider);
-const stakingContract = new ethers.Contract(
-  STAKE,
-  staking.abi,
-  provider
-);
+const stakingContract = new ethers.Contract(STAKE, staking.abi, provider);
 
 const getGovStake = async (address) => {
   return stakingContract.getGovernanceStake(address);
@@ -35,7 +31,7 @@ const getTotalStakeAmount = async () => {
   return stakingContract.getTotalPoolAmount();
 };
 
-const getReward = async(user) => {
+const getReward = async (user) => {
   const userData = await stakingContract.getGovernanceStake(user);
   const totalAmount = await getTotalStakeAmount();
   const balance = await getUserBalance(GOVERNANCE, "CGT");
@@ -92,7 +88,7 @@ const generate = async (amount, token) => {
   const collateral = token == "DAI" ? Number(D[1]) : Number(E[1]);
   const min = token == "DAI" ? 267 : 120;
   let mint = (amount * collateral) / Number(C[1]);
-  
+
   return (mint * 10000) / (ratio * min);
 };
 
@@ -183,5 +179,5 @@ export default {
   generate,
   getTotalStakeAmount,
   getGovStake,
-  getReward
+  getReward,
 };
