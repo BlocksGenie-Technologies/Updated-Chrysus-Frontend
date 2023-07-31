@@ -7,7 +7,11 @@ import { H4 } from "../typography/h4";
 import { Dash, C, Ether, home, meta1 } from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { loadBlockchain, loadWalletConnect, updatAccount, } from "../../slices/web3ContractSlice";
+import {
+  loadBlockchain,
+  loadWalletConnect,
+  updatAccount,
+} from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import Utils from "../../utilities";
 import styled from "styled-components";
@@ -32,7 +36,9 @@ const tabDataBlog = [
 const UserDashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const dispatch = useAppDispatch();
-  const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3, contract, accounts, Provider } = useAppSelector(
+    (state) => state.web3Connect,
+  );
   const [WalletAddress, setWalletAddress] = useState([]);
   const [transaction, settransaction] = useState();
   const [usdprice, setusdprice] = useState();
@@ -44,7 +50,9 @@ const UserDashboard = () => {
   const [daiFeed, setDaiFeed] = useState(0);
   const [chcFeed, setChcFeed] = useState(0);
   const [ethFeed, setEthFeed] = useState(0);
-  const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
+  const [data, setData] = useState(
+    document.querySelectorAll("#status_wrapper tbody tr"),
+  );
   const [cdp, setCDP] = useState(0);
   const sort = 6;
   const activePag = useRef(0);
@@ -110,13 +118,15 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
-          fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
-            .then(response => {
-              return response.json()
-            })
-            .then(data => {
-              !transaction && settransaction(data.result);
-            })
+        fetch(
+          `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`,
+        )
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            !transaction && settransaction(data.result);
+          });
       } catch (err) {
         console.log(err);
       }
@@ -195,8 +205,7 @@ const UserDashboard = () => {
             }}
           >
             <div className="mt-2 text-center">
-              <H4>
-              </H4>
+              <H4></H4>
             </div>
             {/* <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
               <div className="me-auto">
@@ -248,16 +257,36 @@ const UserDashboard = () => {
                   <thead>
                     <tr>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">ASSET</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          ASSET
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">BALANCE</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          BALANCE
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">USD</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          USD
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white"> </span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          {" "}
+                        </span>
                       </td>
                     </tr>
                   </thead>
@@ -510,7 +539,7 @@ const UserDashboard = () => {
                                     Action
                                   </span>
                                 </Link> */}
-                                <Link >
+                                <Link>
                                   <span
                                     className="badge cursor-pointer"
                                     style={{
@@ -556,7 +585,7 @@ const UserDashboard = () => {
                                     Action
                                   </span>
                                 </Link> */}
-                                <Link >
+                                <Link>
                                   <span
                                     className="badge cursor-pointer"
                                     style={{
@@ -621,8 +650,9 @@ const UserDashboard = () => {
                                   }}
                                   key={i}
                                   // to="/future"
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                    } `}
+                                  className={`paginate_button  ${
+                                    activePag.current === i ? "current" : ""
+                                  } `}
                                   onClick={() => onClick(i)}
                                 >
                                   {number}
