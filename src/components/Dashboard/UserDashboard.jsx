@@ -7,7 +7,11 @@ import { H4 } from "../typography/h4";
 import { Dash, C, Ether, home, meta1 } from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { loadBlockchain, loadWalletConnect, updatAccount, } from "../../slices/web3ContractSlice";
+import {
+  loadBlockchain,
+  loadWalletConnect,
+  updatAccount,
+} from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import Utils from "../../utilities";
 import styled from "styled-components";
@@ -32,7 +36,9 @@ const tabDataBlog = [
 const UserDashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const dispatch = useAppDispatch();
-  const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3, contract, accounts, Provider } = useAppSelector(
+    (state) => state.web3Connect,
+  );
   const [WalletAddress, setWalletAddress] = useState([]);
   const [transaction, settransaction] = useState([]);
   const [Alltransaction, setAlltransaction] = useState([]);
@@ -45,7 +51,9 @@ const UserDashboard = () => {
   const [daiFeed, setDaiFeed] = useState(0);
   const [chcFeed, setChcFeed] = useState(0);
   const [ethFeed, setEthFeed] = useState(0);
-  const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
+  const [data, setData] = useState(
+    document.querySelectorAll("#status_wrapper tbody tr"),
+  );
   const [cdp, setCDP] = useState(0);
   const sort = 6;
   const activePag = useRef(0);
@@ -119,34 +127,33 @@ const UserDashboard = () => {
     "0x22867d78",
     "0x00f714ce",
     "0xa694fc3a",
-    "0xc6066272"
+    "0xc6066272",
   ];
 
-  
   // Function to fetch and filter user transactions
   // async function getUserTransactionsBatch(startBlock = 0, batchSize = 5, allTransactions = []) {
   //   try {
   //     const url = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&startblock=${startBlock}&endblock=${startBlock + batchSize - 1}&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`;
   //     const response = await fetch(url);
   //     const data = await response.json();
-  
+
   //     // Check if the API response is successful
   //     if (data.status !== "1") {
   //       console.log("API request failed. Please check the API or try again later.");
   //       return allTransactions;
   //     }
-  
+
   //     // Filter the transactions based on valid method IDs
   //     const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
-  
+
   //     // Concatenate the new transactions with the existing ones
   //     const updatedTransactions = allTransactions.concat(transactions);
-  
+
   //     // If the desired number of transactions is reached or there are no more transactions, return the result
   //     if (updatedTransactions.length >= 5 || transactions.length === 0) {
   //       return updatedTransactions.slice(0, 5);
   //     }
-  
+
   //     // Recursive call to fetch the next batch of transactions
   //     return getUserTransactionsBatch(startBlock + batchSize, batchSize, updatedTransactions);
   //   } catch (error) {
@@ -154,7 +161,7 @@ const UserDashboard = () => {
   //     return allTransactions;
   //   }
   // }
-  
+
   // Call the function and log the result
   // getUserTransactionsBatch()
   //   .then((transactions) => console.log(transactions))
@@ -164,13 +171,17 @@ const UserDashboard = () => {
     if (WalletAddress) {
       const fetchTransaction = async () => {
         try {
-          fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
-            .then(response => {
-              return response.json()
+          fetch(
+            `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${accounts[0]}&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`,
+          )
+            .then((response) => {
+              return response.json();
             })
-            .then(data => {
-              const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
-              settransaction(transactions)
+            .then((data) => {
+              const transactions = data.result.filter((transaction) =>
+                validMethodIDs.includes(transaction.methodId),
+              );
+              settransaction(transactions);
               // {
               //   const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
               //   transaction.length === 0 ? (
@@ -178,7 +189,7 @@ const UserDashboard = () => {
               //   ) :
               //     "transection error"
               // }
-            })
+            });
         } catch (err) {
           console.log(err);
         }
@@ -198,18 +209,18 @@ const UserDashboard = () => {
   //           console.log("API request failed. Please check the API or try again later.");
   //           return Alltransaction;
   //         }
-      
+
   //         // Filter the transactions based on valid method IDs
   //         const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
   //         setAlltransaction(transactions);
   //         // Concatenate the new transactions with the existing ones
   //         // const updatedTransactions = Alltransaction.concat(transactions);
-      
+
   //         // If the desired number of transactions is reached or there are no more transactions, return the result
   //         if (Alltransaction.length >= 5 || transactions.length === 0) {
   //           return Alltransaction.slice(0, 5);
   //         }
-      
+
   //         // Recursive call to fetch the next batch of transactions
   //         return getUserTransactionsBatch(startBlock + batchSize, batchSize, Alltransaction);
   //       } catch (error) {
@@ -280,7 +291,6 @@ const UserDashboard = () => {
     },
   ];
 
-
   return (
     <div className="min-h-screen">
       <div className="row mt-4">
@@ -294,8 +304,7 @@ const UserDashboard = () => {
             }}
           >
             <div className="mt-2 text-center">
-              <H4>
-              </H4>
+              <H4></H4>
             </div>
             {/* <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
               <div className="me-auto">
@@ -347,16 +356,36 @@ const UserDashboard = () => {
                   <thead>
                     <tr>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">ASSET</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          ASSET
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">BALANCE</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          BALANCE
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">USD</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          USD
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white"> </span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          {" "}
+                        </span>
                       </td>
                     </tr>
                   </thead>
@@ -585,22 +614,20 @@ const UserDashboard = () => {
                             </tr>
                           </thead>
                           <tbody className="text-white">
-                            {transaction.length === 0 ? (
-                              ""
-                            ) : (transaction.map((item, index) => (
-                              <tr key={index}>
-                                <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
-                                <td>
-                                  {item.methodId}
-                                </td>
-                                <td>
-                                  {item.blockHash}
-                                </td>
-                                <td>
-                                </td>
-                              </tr>
-                            )))
-                            }
+                            {transaction.length === 0
+                              ? ""
+                              : transaction.map((item, index) => (
+                                  <tr key={index}>
+                                    <td>
+                                      {new Date(
+                                        item.timeStamp * 1000,
+                                      ).toDateString()}
+                                    </td>
+                                    <td>{item.methodId}</td>
+                                    <td>{item.blockHash}</td>
+                                    <td></td>
+                                  </tr>
+                                ))}
                             {/* <Link>
                               <span
                                 className="badge cursor-pointer"
@@ -663,8 +690,9 @@ const UserDashboard = () => {
                                   }}
                                   key={i}
                                   // to="/future"
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                    } `}
+                                  className={`paginate_button  ${
+                                    activePag.current === i ? "current" : ""
+                                  } `}
                                   onClick={() => onClick(i)}
                                 >
                                   {number}
