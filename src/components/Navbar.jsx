@@ -254,7 +254,7 @@ const Navbar = () => {
                     color: "#846424",
                   }}
                 > */}
-                  {status === "pending" ? "Connecting..." : "Connect"}
+                {status === "pending" ? "Connecting..." : "Connect"}
                 {/* </a> */}
               </Button>
               <WalletConnect
