@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import scrollreveal from "scrollreveal";
 
-
 const MarketPlace = () => {
-
   useEffect(() => {
     const sr = scrollreveal({
       origin: "bottom",
@@ -21,31 +19,28 @@ const MarketPlace = () => {
       {
         opacity: 0,
         interval: 100,
-      }
+      },
     );
   }, []);
-
 
   return (
     <div className=" min-h-screen">
       <Section>
-
         <div className="grid">
           <h1 className="text-center">MarektPlace</h1>
         </div>
-
       </Section>
     </div>
-  )
-}
+  );
+};
 
-export default MarketPlace
+export default MarketPlace;
 
 const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
-  background-color:  #121212;
+  background-color: #121212;
   .grid {
     display: flex;
     flex-direction: column;

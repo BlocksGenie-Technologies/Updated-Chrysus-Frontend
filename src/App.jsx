@@ -36,7 +36,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { WithdrawStake } from "./components/Dashboard/withdrawStke";
 import MarketPlace from "./components/MarketPlace/marketplace";
 const Home = lazy(() => import("./components/Home"));
-import { CCoinGold } from './assets';
+import { CCoinGold } from "./assets";
 
 // const {MintPosition} = lazy(() => import("./components/Dashboard/MintPosition"));
 
@@ -71,7 +71,9 @@ const App = () => {
           </svg>
           <span className="font-medium"> Processing... </span>
         </button> */}
-        <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
+        <div
+          className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}
+        >
           <div className="">
             <span className="action action-center coin-rotating">
               <img src={CCoinGold} alt="c-coin-gold.sg" />
@@ -132,7 +134,7 @@ const App = () => {
             <Route path="governance" element={<Governance />}>
               <Route index element={<DaoLandPage />} />
             </Route>
-            <Route path="marketplace" element ={<MarketPlace/>}/>
+            <Route path="marketplace" element={<MarketPlace />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

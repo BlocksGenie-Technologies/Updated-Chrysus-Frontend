@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import scrollreveal from "scrollreveal";
-import { logoo, market, GI, A, DashboardIcon, HomeIcon, LoanIcon, MintIcon, SwapIcon, } from "../../assets";
-import { useAppSelector } from '../../reducer/store';
-
+import {
+  logoo,
+  market,
+  GI,
+  A,
+  DashboardIcon,
+  HomeIcon,
+  LoanIcon,
+  MintIcon,
+  SwapIcon,
+} from "../../assets";
+import { useAppSelector } from "../../reducer/store";
 
 export default function UserSideBar() {
   const navigate = useNavigate();
@@ -15,7 +24,7 @@ export default function UserSideBar() {
   const [navbarState, setNavbarState] = useState(false);
   const html = document.querySelector("html");
   html.addEventListener("click", () => setNavbarState(false));
-  const { web3,Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3, Provider } = useAppSelector((state) => state.web3Connect);
   const [sidebar, setSidebar] = useState(false);
 
   // const showSidebar = () => setSidebar(!sidebar);
@@ -29,16 +38,15 @@ export default function UserSideBar() {
         if (addrees !== null) {
           localStorage.clear();
         }
-        navigate("/")
+        navigate("/");
       }
       if (Provider.connected) {
         Provider.disconnect();
-        web3.setProvider(null)
-        navigate("/")
+        web3.setProvider(null);
+        navigate("/");
       }
     }
   };
-
 
   useEffect(() => {
     const sr = scrollreveal({
@@ -66,7 +74,7 @@ export default function UserSideBar() {
       {
         opacity: 0,
         interval: 300,
-      }
+      },
     );
   }, []);
 
@@ -75,7 +83,9 @@ export default function UserSideBar() {
       <Section>
         <div className="top">
           <div className="brand">
-            <Link to={"/"} className="logo-dark"><img width="150" height="150" src={logoo} alt="" /></Link>
+            <Link to={"/"} className="logo-dark">
+              <img width="150" height="150" src={logoo} alt="" />
+            </Link>
           </div>
           <div className="toggle">
             {navbarState ? (
@@ -143,7 +153,6 @@ export default function UserSideBar() {
                   className={currentLink === 4 ? "active" : "none"}
                   onClick={() => setCurrentLink(4)}
                 >
-
                   <a className="cursor-pointer">
                     <Link to={"swappopup"}>
                       <img
@@ -159,9 +168,14 @@ export default function UserSideBar() {
               <Link to={"loan"}>
                 <li
                   className={currentLink === 5 ? "active" : "none"}
-                  onClick={() => setCurrentLink(5)}>
+                  onClick={() => setCurrentLink(5)}
+                >
                   <Link to={"loan"}>
-                    <img className="jumbo-button-icon" src={LoanIcon} alt="umbrella-gold" />
+                    <img
+                      className="jumbo-button-icon"
+                      src={LoanIcon}
+                      alt="umbrella-gold"
+                    />
                     <span> Loan</span>
                   </Link>
                 </li>
@@ -172,7 +186,9 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(6)}
                 >
                   <Link to={"governance"}>
-                    <img width="15" height="15"
+                    <img
+                      width="15"
+                      height="15"
                       className="jumbo-button-icon"
                       src={GI}
                       alt="umbrella-gold"
@@ -187,7 +203,9 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(7)}
                 >
                   <Link to={"marketplace"}>
-                    <img width="20" height="12"
+                    <img
+                      width="20"
+                      height="12"
                       className="jumbo-button-icon"
                       src={market}
                       alt="umbrella-gold"
@@ -202,7 +220,9 @@ export default function UserSideBar() {
                   onClick={() => setCurrentLink(8)}
                 >
                   <Link to={"mintposition"}>
-                    <img width="15" height="15"
+                    <img
+                      width="15"
+                      height="15"
                       className="jumbo-button-icon"
                       src={A}
                       alt="umbrella-gold"
@@ -217,13 +237,12 @@ export default function UserSideBar() {
         <div className="logout">
           <Link to={"/"}>
             <FiLogOut />
-            <span className="logout"
-              onClick={() => DisconnectWallet()}>Disconnect</span>
+            <span className="logout" onClick={() => DisconnectWallet()}>
+              Disconnect
+            </span>
           </Link>
         </div>
       </Section>
-
-
 
       <ResponsiveNav state={navbarState} className={navbarState ? "show" : ""}>
         <div className="responsive__links">
@@ -231,7 +250,8 @@ export default function UserSideBar() {
             <Link to={"/accounts"}>
               <li
                 className={currentLink === 1 ? "active" : "none"}
-                onClick={() => setCurrentLink(1)} >
+                onClick={() => setCurrentLink(1)}
+              >
                 <Link to={"/accounts"}>
                   {/* <MdSpaceDashboard /> */}
                   <img
@@ -280,8 +300,9 @@ export default function UserSideBar() {
                 onClick={() => setCurrentLink(4)}
               >
                 <Link to={"swappopup"}>
-                  <a className="cursor-pointer"
-                  // onClick={() => setshowSwapModel(true)}
+                  <a
+                    className="cursor-pointer"
+                    // onClick={() => setshowSwapModel(true)}
                   >
                     <img
                       className="jumbo-button-icon"
@@ -325,20 +346,22 @@ export default function UserSideBar() {
               </li>
             </Link>
             <Link to={"marketplace"}>
-                <li
-                  className={currentLink === 7 ? "active" : "none"}
-                  onClick={() => setCurrentLink(7)}
-                >
-                  <Link to={"marketplace"}>
-                    <img width="15" height="15"
-                      className="jumbo-button-icon"
-                      src={market}
-                      alt="umbrella-gold"
-                    />
-                    <span> MarketPlace </span>
-                  </Link>
-                </li>
-              </Link>
+              <li
+                className={currentLink === 7 ? "active" : "none"}
+                onClick={() => setCurrentLink(7)}
+              >
+                <Link to={"marketplace"}>
+                  <img
+                    width="15"
+                    height="15"
+                    className="jumbo-button-icon"
+                    src={market}
+                    alt="umbrella-gold"
+                  />
+                  <span> MarketPlace </span>
+                </Link>
+              </li>
+            </Link>
             <Link to={"allpositions"}>
               <li
                 className={currentLink === 8 ? "active" : "none"}
@@ -357,8 +380,9 @@ export default function UserSideBar() {
             <li className="logout">
               <Link to={"/"}>
                 <FiLogOut />
-                <span className="logout"
-                  onClick={() => DisconnectWallet()}>Disconnect</span>
+                <span className="logout" onClick={() => DisconnectWallet()}>
+                  Disconnect
+                </span>
               </Link>
             </li>
           </ul>
@@ -367,7 +391,6 @@ export default function UserSideBar() {
     </>
   );
 }
-
 
 const Nav = styled.div`
   background: #15171c;
@@ -394,7 +417,7 @@ const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0;
-  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
 `;
@@ -403,16 +426,12 @@ const SidebarWrap = styled.div`
   width: 100%;
 `;
 
-
-
-
 const Section = styled.section`
   position: fixed;
   z-index: 99;
   left: 0;
 
-  
-  height:100vh;
+  height: 100vh;
   overflow-y: scroll;
 
   background-color: #211f21;
@@ -469,7 +488,7 @@ const Section = styled.section`
             text-decoration: none;
             display: flex;
             gap: 1rem;
-            color:white;
+            color: white;
           }
         }
         .active {
