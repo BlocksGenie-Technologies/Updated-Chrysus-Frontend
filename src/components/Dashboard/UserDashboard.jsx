@@ -7,7 +7,11 @@ import { H4 } from "../typography/h4";
 import { Dash, C, Ether, home, meta1 } from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { loadBlockchain, loadWalletConnect, updatAccount, } from "../../slices/web3ContractSlice";
+import {
+  loadBlockchain,
+  loadWalletConnect,
+  updatAccount,
+} from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import Utils from "../../utilities";
 import styled from "styled-components";
@@ -32,7 +36,9 @@ const tabDataBlog = [
 const UserDashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const dispatch = useAppDispatch();
-  const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3, contract, accounts, Provider } = useAppSelector(
+    (state) => state.web3Connect,
+  );
   const [WalletAddress, setWalletAddress] = useState([]);
   const [transaction, settransaction] = useState([]);
   const [Alltransaction, setAlltransaction] = useState([]);
@@ -45,7 +51,9 @@ const UserDashboard = () => {
   const [daiFeed, setDaiFeed] = useState(0);
   const [chcFeed, setChcFeed] = useState(0);
   const [ethFeed, setEthFeed] = useState(0);
-  const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
+  const [data, setData] = useState(
+    document.querySelectorAll("#status_wrapper tbody tr"),
+  );
   const [cdp, setCDP] = useState(0);
   const sort = 5;
   const activePag = useRef(0);
@@ -70,7 +78,9 @@ const UserDashboard = () => {
   // Active pagginarion
 
   // paggination
-  let paggination = Array(Math.ceil(data.length / sort)).fill().map((_, i) => i + 1);
+  let paggination = Array(Math.ceil(data.length / sort))
+    .fill()
+    .map((_, i) => i + 1);
 
   // Active paggination & chage data
   const onClick = (i) => {
@@ -89,7 +99,6 @@ const UserDashboard = () => {
     }
   });
 
-
   const validMethodIDs = [
     "0x26c01303",
     "0x350c35e9",
@@ -101,23 +110,25 @@ const UserDashboard = () => {
     "0x22867d78",
     "0x00f714ce",
     "0xa694fc3a",
-    "0xc6066272"
+    "0xc6066272",
   ];
 
-
-  
   useEffect(() => {
     if (WalletAddress) {
       const fetchTransaction = async () => {
         try {
-          fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
-            .then(response => {
-              return response.json()
+          fetch(
+            `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`,
+          )
+            .then((response) => {
+              return response.json();
             })
-            .then(data => {
-              const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
-              settransaction(transactions)
-            })
+            .then((data) => {
+              const transactions = data.result.filter((transaction) =>
+                validMethodIDs.includes(transaction.methodId),
+              );
+              settransaction(transactions);
+            });
         } catch (err) {
           console.log(err);
         }
@@ -125,7 +136,6 @@ const UserDashboard = () => {
       fetchTransaction();
     }
   }, []);
- 
 
   console.log("All transaction", Alltransaction);
   // console.log("See transaction", transaction[0].functionName);
@@ -187,7 +197,6 @@ const UserDashboard = () => {
     },
   ];
 
-
   return (
     <div className="min-h-screen">
       <div className="row mt-4">
@@ -201,8 +210,7 @@ const UserDashboard = () => {
             }}
           >
             <div className="mt-2 text-center">
-              <H4>
-              </H4>
+              <H4></H4>
             </div>
             {/* <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
               <div className="me-auto">
@@ -254,16 +262,36 @@ const UserDashboard = () => {
                   <thead>
                     <tr>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">ASSET</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          ASSET
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">BALANCE</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          BALANCE
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">USD</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          USD
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white"> </span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          {" "}
+                        </span>
                       </td>
                     </tr>
                   </thead>
@@ -491,64 +519,59 @@ const UserDashboard = () => {
                             </tr>
                           </thead>
                           <tbody className="text-white">
-                            {transaction.length === 0 ? (
-                              ""
-                            ) : (transaction
-                              .slice(activePag.current * 5, (activePag.current + 1) * 5)
-                              .map((item, index) => (
-                              <tr key={index}>
-                                <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
-                                <td>
-                                {item.methodId == 0x26c01303 ? (
-                                  <a>Liquidity</a>
-                                ):( item.methodId == 0x350c35e9 ? (
-                                  <a>WithdrawCollateral</a>
-                                ):(
-                                  item.methodId == 0xa5d5db0c ? (
-                                    <a>DepositCollateral</a>
-                                  ):(
-                                    item.methodId == 0x1d7ce898 ? (
-                                      <a>ProposeVote</a>
-                                    ):(
-                                      item.methodId == 0xb1884744 ? (
-                                        <a>Lend</a>
-                                      ):(
-                                        item.methodId == 0x4b3fd148 ? (
-                                          <a>Borrow</a>
-                                        ):(
-                                          item.methodId == 0x22867d78 ? (
-                                            <a>Repay</a>
-                                          ):(
-                                            item.methodId == 0x00f714ce ? (
-                                              <a>Withdraw</a>
-                                            ):(
-                                              item.methodId == 0xa694fc3a ? (
-                                                <a>Stake</a>
-                                              ):(
-                                                item.methodId == 0xc6066272 ? (
-                                                  <a>WithdrawStake</a>
-                                                ):(<></>)
-                                              )
-                                            )
-                                          )
-                                        )
-                                      )
-                                    )
+                            {transaction.length === 0
+                              ? ""
+                              : transaction
+                                  .slice(
+                                    activePag.current * 5,
+                                    (activePag.current + 1) * 5,
                                   )
-                                )
-                                )
-                                }
-                                </td>
-                                <td>
-                                  <Link  to={`https://sepolia.etherscan.io/tx/${item.blockHash}`} target="_blank" style={{textDecorationLine: "underline"}}>
-                                    More details
-                                  </Link>
-                                </td>
-                                <td>
-                                </td>
-                              </tr>
-                            )))
-                            }
+                                  .map((item, index) => (
+                                    <tr key={index}>
+                                      <td>
+                                        {new Date(
+                                          item.timeStamp * 1000,
+                                        ).toDateString()}
+                                      </td>
+                                      <td>
+                                        {item.methodId == 0x26c01303 ? (
+                                          <a>Liquidity</a>
+                                        ) : item.methodId == 0x350c35e9 ? (
+                                          <a>WithdrawCollateral</a>
+                                        ) : item.methodId == 0xa5d5db0c ? (
+                                          <a>DepositCollateral</a>
+                                        ) : item.methodId == 0x1d7ce898 ? (
+                                          <a>ProposeVote</a>
+                                        ) : item.methodId == 0xb1884744 ? (
+                                          <a>Lend</a>
+                                        ) : item.methodId == 0x4b3fd148 ? (
+                                          <a>Borrow</a>
+                                        ) : item.methodId == 0x22867d78 ? (
+                                          <a>Repay</a>
+                                        ) : item.methodId == 0x00f714ce ? (
+                                          <a>Withdraw</a>
+                                        ) : item.methodId == 0xa694fc3a ? (
+                                          <a>Stake</a>
+                                        ) : item.methodId == 0xc6066272 ? (
+                                          <a>WithdrawStake</a>
+                                        ) : (
+                                          <></>
+                                        )}
+                                      </td>
+                                      <td>
+                                        <Link
+                                          to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
+                                          target="_blank"
+                                          style={{
+                                            textDecorationLine: "underline",
+                                          }}
+                                        >
+                                          More details
+                                        </Link>
+                                      </td>
+                                      <td></td>
+                                    </tr>
+                                  ))}
                           </tbody>
                         </table>
                         <div className="d-sm-flex text-white text-center justify-content-between align-items-center mt-3 mb-3">
@@ -559,8 +582,10 @@ const UserDashboard = () => {
                               : data.length}{" "}
                             of {data.length} entries
                           </div>
-                          <div className="dataTables_paginate paging_simple_numbers mb-0"
-                            id="application-tbl1_paginate">
+                          <div
+                            className="dataTables_paginate paging_simple_numbers mb-0"
+                            id="application-tbl1_paginate"
+                          >
                             <Link
                               className="paginate_button previous text-white mt-2"
                               onClick={() =>
@@ -590,8 +615,9 @@ const UserDashboard = () => {
                                   }}
                                   key={i}
                                   // to="/future"
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                    } `}
+                                  className={`paginate_button  ${
+                                    activePag.current === i ? "current" : ""
+                                  } `}
                                   onClick={() => onClick(i)}
                                 >
                                   {number}
