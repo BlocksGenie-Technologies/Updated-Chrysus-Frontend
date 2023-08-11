@@ -338,7 +338,8 @@ const Navbar = () => {
                       color: "#846424",
                     }}
                     className=" font-medium
-                    rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dropdown-toggle">
+                    rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dropdown-toggle"
+                  >
                     {addrees?.substring(0, 7) + "...."}
                   </Button>
                   <ul
@@ -391,7 +392,7 @@ const Navbar = () => {
                     onClick={() => setModalShow(true)}
                     className=" font-medium 
                     rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
-                    >
+                  >
                     <img
                       src={Wallets}
                       alt="wallets"
