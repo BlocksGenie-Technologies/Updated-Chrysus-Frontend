@@ -1,39 +1,52 @@
-import { facebook, instagram, linkedin, twitter, shield, LeafGold, star, UmbrellaGold, SwapGold, CartGold,mb,sb,lb,bb,Linkedin } from "../assets";
+import {
+  facebook,
+  instagram,
+  linkedin,
+  twitter,
+  shield,
+  LeafGold,
+  star,
+  UmbrellaGold,
+  SwapGold,
+  CartGold,
+  mb,
+  sb,
+  lb,
+  bb,
+  Linkedin,
+} from "../assets";
 
 export const navLinks = [
   {
     name: "Home",
-    path: '/'
+    path: "/",
   },
   {
     name: "About",
-    path: '/about'
+    path: "/about",
   },
   {
     name: "Services",
-    path: '/services'
+    path: "/services",
   },
   {
     name: "Governance",
-    path: '/governanc'
+    path: "/governanc",
   },
   {
     name: "FAQ",
-    path: '/faq'
+    path: "/faq",
   },
-
 ];
 export const daoNavLinks = [
   {
     name: "Overview",
-    path: '/governance'
+    path: "/governance",
   },
   {
     name: "Proposal",
-    path: ''
+    path: "",
   },
-
-
 ];
 
 export const descone = [
@@ -76,7 +89,7 @@ export const features = [
     icon: mb,
     title: "Mint",
     content:
-    "To mint CHC: Deposit ETH or DAI as collateral to the CHC contract. Based on asset collateralization ratios and CHC tokens are issued to the user."
+      "To mint CHC: Deposit ETH or DAI as collateral to the CHC contract. Based on asset collateralization ratios and CHC tokens are issued to the user.",
   },
 ];
 
@@ -180,4 +193,3 @@ export const socialMedia = [
     link: "https://www.linkedin.com/company/chrysus-gold-coin/",
   },
 ];
-
