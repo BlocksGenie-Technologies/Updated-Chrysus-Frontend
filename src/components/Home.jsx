@@ -1,14 +1,13 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from "react";
 import styles from "../style";
-import Navbar from './Navbar';
+import Navbar from "./Navbar";
 
-const Hero = lazy(() => import('./Hero'));
-const Coin = lazy(() => import('./Coin'));
-const Ecosystem = lazy(() => import('./Ecosystem'));
-const FeatureBlog = lazy(() => import('./FeatureBlog'));
-const Community = lazy(() => import('./Community'))
-const Footer = lazy(() => import('./Footer'));
-
+const Hero = lazy(() => import("./Hero"));
+const Coin = lazy(() => import("./Coin"));
+const Ecosystem = lazy(() => import("./Ecosystem"));
+const FeatureBlog = lazy(() => import("./FeatureBlog"));
+const Community = lazy(() => import("./Community"));
+const Footer = lazy(() => import("./Footer"));
 
 const Home = () => {
   return (
@@ -47,7 +46,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Home;
