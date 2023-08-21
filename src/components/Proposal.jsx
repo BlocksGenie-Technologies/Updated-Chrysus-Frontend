@@ -8,7 +8,7 @@ import Footer from "./Footer";
 
 const Proposal = () => {
   const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
+    document.querySelectorAll("#status_wrapper tbody tr"),
   );
 
   const sort = 6;
@@ -177,8 +177,9 @@ const Proposal = () => {
                                   }}
                                   key={i}
                                   // to="/future"
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                    } `}
+                                  className={`paginate_button  ${
+                                    activePag.current === i ? "current" : ""
+                                  } `}
                                   onClick={() => onClick(i)}
                                 >
                                   {number}
@@ -276,8 +277,9 @@ const Proposal = () => {
                                     fontSize: "10px",
                                   }}
                                   key={i}
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                    } `}
+                                  className={`paginate_button  ${
+                                    activePag.current === i ? "current" : ""
+                                  } `}
                                   onClick={() => onClick(i)}
                                 >
                                   {number}
@@ -375,8 +377,9 @@ const Proposal = () => {
                                     fontSize: "10px",
                                   }}
                                   key={i}
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                    } `}
+                                  className={`paginate_button  ${
+                                    activePag.current === i ? "current" : ""
+                                  } `}
                                   onClick={() => onClick(i)}
                                 >
                                   {number}
@@ -474,8 +477,9 @@ const Proposal = () => {
                                     fontSize: "10px",
                                   }}
                                   key={i}
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                    } `}
+                                  className={`paginate_button  ${
+                                    activePag.current === i ? "current" : ""
+                                  } `}
                                   onClick={() => onClick(i)}
                                 >
                                   {number}

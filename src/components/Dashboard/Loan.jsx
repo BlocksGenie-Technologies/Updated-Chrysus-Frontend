@@ -24,7 +24,7 @@ export default function Loan() {
       {
         opacity: 0,
         interval: 100,
-      }
+      },
     );
   }, []);
 
@@ -38,28 +38,26 @@ export default function Loan() {
     });
 
     Utils.interestRate().then(function (data) {
-      setInterestRate((Number(data)));
+      setInterestRate(Number(data));
     });
   });
-
-
-
 
   return (
     <div className=" min-h-screen">
       <Section>
         <div className="grid">
           <div className="col-xl-12">
-            <div className="card"
+            <div
+              className="card"
               style={{
                 backgroundColor: "#211f21",
                 borderRadius: "16px",
                 color: "#846424",
-              }}>
+              }}
+            >
               <div className="card-header pb-0 d-block d-sm-flex flex-wrap border-0 align-items-center">
                 <div className="me-auto mb-3">
-                  <h2 className="fs-28 font-w600 text-white">
-                  </h2>
+                  <h2 className="fs-28 font-w600 text-white"></h2>
                 </div>
               </div>
               <div className="card-body">
@@ -68,25 +66,35 @@ export default function Loan() {
                     <div className="px-2 info-group">
                       <p className="fs-18 mb-1"> Interest Rate</p>
                       <h2 className="fs-28 font-w600 text-white">
-                        {Utils.toFixedNoRounding(interestRate * 100 / 1e18, 2) + "%"}
+                        {Utils.toFixedNoRounding(
+                          (interestRate * 100) / 1e18,
+                          2,
+                        ) + "%"}
                       </h2>
                     </div>
                     <div className="px-2 info-group">
-                      <p className="fs-14 mb-1" >Utilization Rate</p>
+                      <p className="fs-14 mb-1">Utilization Rate</p>
                       <h3 className="fs-20 font-w600 text-white">
-                        {Utils.toFixedNoRounding(utilRate * 100 / 1e18, 2) + "%"}
+                        {Utils.toFixedNoRounding((utilRate * 100) / 1e18, 2) +
+                          "%"}
                       </h3>
                     </div>
                     <div className="px-2 info-group">
                       <p className="fs-14 mb-1">Total Supplied</p>
                       <h3 className="fs-20 font-w600 text-white">
-                        {Utils.toFixedNoRounding(Number(volume.totalSupplied) / 1e18, 3)}
+                        {Utils.toFixedNoRounding(
+                          Number(volume.totalSupplied) / 1e18,
+                          3,
+                        )}
                       </h3>
                     </div>
                     <div className="px-2 info-group">
                       <p className="fs-14 mb-1">Total Borrowed</p>
                       <h3 className="fs-20 font-w600 text-white">
-                        {Utils.toFixedNoRounding(Number(volume.totalBorrowed) / 1e18, 2)}
+                        {Utils.toFixedNoRounding(
+                          Number(volume.totalBorrowed) / 1e18,
+                          2,
+                        )}
                       </h3>
                     </div>
                   </div>
@@ -101,12 +109,11 @@ export default function Loan() {
   );
 }
 
-
 const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
-  background-color:  #121212;
+  background-color: #121212;
   .grid {
     display: flex;
     flex-direction: column;

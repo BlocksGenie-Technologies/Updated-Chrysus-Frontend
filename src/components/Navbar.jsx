@@ -8,7 +8,11 @@ import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { FiLogOut } from "react-icons/fi";
 import { useAppDispatch, useAppSelector } from "../reducer/store";
-import { loadBlockchain, loadWalletConnect, updatAccount } from "../slices/web3ContractSlice";
+import {
+  loadBlockchain,
+  loadWalletConnect,
+  updatAccount,
+} from "../slices/web3ContractSlice";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -16,7 +20,9 @@ const Navbar = () => {
   const [modalShow, setModalShow] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useAppDispatch();
-  const { web3, Provider, status } = useAppSelector((state) => state.web3Connect);
+  const { web3, Provider, status } = useAppSelector(
+    (state) => state.web3Connect,
+  );
 
   // Account Switching
   useEffect(() => {
@@ -252,16 +258,18 @@ const Navbar = () => {
         />
 
         <div
-          className={`${!toggle ? "hidden" : "flex"
-            }  p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-lg sidebar`}
+          className={`${
+            !toggle ? "hidden" : "flex"
+          }  p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-lg sidebar`}
           style={{ zIndex: 6 }}
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
             {navLinks.map((nav, index) => (
               <li
                 key={nav.path}
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.name ? "text-white" : "text-dimWhite"
-                  } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
+                className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                  active === nav.name ? "text-white" : "text-dimWhite"
+                } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.name)}
               >
                 <NavLink
@@ -311,7 +319,8 @@ const Navbar = () => {
                       color: "#846424",
                     }}
                     className=" font-medium
-                    rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dropdown-toggle">
+                    rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center dropdown-toggle"
+                  >
                     {addrees?.substring(0, 7) + "...."}
                   </Button>
                   <ul

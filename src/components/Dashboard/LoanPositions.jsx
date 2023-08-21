@@ -10,7 +10,7 @@ import { B, CP, D } from "../../assets";
 
 const LoanPositions = () => {
   const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
+    document.querySelectorAll("#status_wrapper tbody tr"),
   );
 
   const sort = 6;
@@ -46,7 +46,6 @@ const LoanPositions = () => {
     chageData(activePag.current * sort, (activePag.current + 1) * sort);
     settest(i);
   };
-
 
   const Dai = [
     {

@@ -41,14 +41,14 @@ export const Withdraw = () => {
         const chrysusContract = new ethers.Contract(
           CHRYSUS,
           chrysus.abi,
-          _signer
+          _signer,
         );
 
         const _collateral = collateral == "DAI" ? DAI : ETH;
 
         let Txn = await chrysusContract.withdrawCollateral(
           _collateral,
-          ethers.utils.parseUnits(String(amount))
+          ethers.utils.parseUnits(String(amount)),
         );
         setLoading(true);
         await Txn.wait();

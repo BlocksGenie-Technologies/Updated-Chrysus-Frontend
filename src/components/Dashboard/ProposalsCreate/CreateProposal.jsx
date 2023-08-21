@@ -34,9 +34,13 @@ const CreateProposal = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [currentLink, setCurrentLink] = useState(1);
-  const { web3, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3, contract, accounts, socketContract, Provider } = useAppSelector(
+    (state) => state.web3Connect,
+  );
   const [action, setaction] = useState({});
-  const [data, setData] = useState(document.querySelectorAll("#status_wrapper tbody tr"));
+  const [data, setData] = useState(
+    document.querySelectorAll("#status_wrapper tbody tr"),
+  );
   const sort = 6;
   const activePag = useRef(0);
   const [test, settest] = useState(0);
@@ -52,7 +56,6 @@ const CreateProposal = () => {
       });
     }
   });
-
 
   const more = async () => {
     navigate("/accounts/governance");
@@ -330,7 +333,8 @@ const CreateProposal = () => {
                               fontWeight: "700",
                               fontSize: "15px",
                             }}
-                            className=" font-thin rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center">
+                            className=" font-thin rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center"
+                          >
                             <a>Submit</a>
                           </Button>
                         </div>
@@ -642,4 +646,3 @@ const Section = styled.section`
     }
   }
 `;
-

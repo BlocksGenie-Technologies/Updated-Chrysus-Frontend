@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {close, menu, Wallets, walet1,meta1} from "../assets";
+import { close, menu, Wallets, walet1, meta1 } from "../assets";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { FiLogOut } from "react-icons/fi";
 import { useAppDispatch, useAppSelector } from "../reducer/store";
-import { loadBlockchain,loadWalletConnect, updatAccount} from "../slices/web3ContractSlice";
+import {
+  loadBlockchain,
+  loadWalletConnect,
+  updatAccount,
+} from "../slices/web3ContractSlice";
 
 const DaoNav = () => {
   const navigate = useNavigate();
@@ -14,7 +18,8 @@ const DaoNav = () => {
   const [modalShow, setModalShow] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useAppDispatch();
-  const { web3, balance, contract, accounts, socketContract, Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3, balance, contract, accounts, socketContract, Provider } =
+    useAppSelector((state) => state.web3Connect);
 
   // Account Switching
   useEffect(() => {

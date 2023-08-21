@@ -2,7 +2,7 @@ import styles from "../style";
 import { logoo } from "../assets";
 import { footerLinks, socialMedia } from "../constants";
 import { memo } from "react";
-import {NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => (
   <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
@@ -44,12 +44,14 @@ const Footer = () => (
         ))}
         <div className="flex flex-row md:mt-0 mt-4">
           {socialMedia.map((social, index) => (
-            <img loading="lazy"
+            <img
+              loading="lazy"
               key={social.id}
               src={social.icon}
               alt={social.id}
-              className={`w-[21px] h-[21px] object-contain cursor-pointer ${index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
-                }`}
+              className={`w-[21px] h-[21px] object-contain cursor-pointer ${
+                index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
+              }`}
               onClick={() => window.open(social.link)}
             />
           ))}

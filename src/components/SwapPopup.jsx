@@ -14,9 +14,8 @@ const SwapPopup = () => {
   useEffect(() => {
     Utils.getUserBalance(address, "CHC").then(function (data) {
       setBalance(Utils.toFixedNoRounding(Number(data) / 1e18, 3));
-    })
+    });
   });
-
 
   return (
     <div className=" min-h-screen">
@@ -54,10 +53,12 @@ const SwapPopup = () => {
                 <H4>Chrysus Coin</H4>
                 <div className="d-flex flex-column">
                   <P className="m-0">
-                    Chrysus facilitates the instant exchange between Chrysus Token
-                    and Selected Token/Coin
+                    Chrysus facilitates the instant exchange between Chrysus
+                    Token and Selected Token/Coin
                   </P>
-                  <Body className="m-0">Quickly swap to the growing asset.</Body>
+                  <Body className="m-0">
+                    Quickly swap to the growing asset.
+                  </Body>
                   <div className="my-3" />
                   <label className="form-label text-primary">
                     Available (CHC) {balance}
@@ -88,7 +89,9 @@ const SwapPopup = () => {
                       <img loading="lazy" src={Chrysus} alt="meta" />
                     </span>
                   </div>
-                  <label className="form-label text-primary">Enter Amount</label>
+                  <label className="form-label text-primary">
+                    Enter Amount
+                  </label>
                   <div
                     className="input-group"
                     style={{
