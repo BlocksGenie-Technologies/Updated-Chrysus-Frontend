@@ -36,14 +36,15 @@ import ScrollToTop from "./components/ScrollToTop";
 import { WithdrawStake } from "./components/Dashboard/withdrawStke";
 import Ecommerce from "./components/MarketPlace/ecommerce";
 const Home = lazy(() => import("./components/Home"));
-import { CCoinGold } from './assets';
-
+import { CCoinGold } from "./assets";
 
 const App = () => {
   function Loading() {
     return (
       <div className="flex h-screen w-screen items-center justify-center">
-        <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
+        <div
+          className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}
+        >
           <div className="">
             <span className="action action-center coin-rotating">
               <img src={CCoinGold} alt="c-coin-gold.sg" />
@@ -58,7 +59,15 @@ const App = () => {
     <div className="bg-black w-full overflow-hidden">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Suspense fallback={<Loading />}> <Home /></Suspense>}/>
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<Loading />}>
+                {" "}
+                <Home />
+              </Suspense>
+            }
+          />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/governanc" element={<Ecosystems />} />
@@ -92,7 +101,7 @@ const App = () => {
             <Route path="governance" element={<Governance />}>
               <Route index element={<DaoLandPage />} />
             </Route>
-            <Route path="ecommerce" element ={<Ecommerce/>}/>
+            <Route path="ecommerce" element={<Ecommerce />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
