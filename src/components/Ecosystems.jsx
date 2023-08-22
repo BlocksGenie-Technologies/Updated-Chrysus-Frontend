@@ -27,7 +27,6 @@ const ImageBox = ({ image, changeClass }) => {
   );
 };
 
-
 const Ecosystems = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -42,22 +41,26 @@ const Ecosystems = () => {
   return (
     <div>
       <div className={`${styles.paddingXX} ${styles.flexCenter}`}>
-          <Navbar />
+        <Navbar />
       </div>
       <div className="d-flex flex-column align-items-center justify-content-center">
-        <H4><p
-          style={{
-            fontWeight: "600",
-            fontSize: "44px",
-            marginTop: "70px",
-            marginBottom: "60px",
-            fontFamily: "Montserrat"
-          }}
-        >
-          Governance{" "}
-        </p>
+        <H4>
+          <p
+            style={{
+              fontWeight: "600",
+              fontSize: "44px",
+              marginTop: "70px",
+              marginBottom: "60px",
+              fontFamily: "Montserrat",
+            }}
+          >
+            Governance{" "}
+          </p>
         </H4>
-        <p className="text-center col-8" style={{ color: "#FFFFFF", fontFamily: "Poppins" }}>
+        <p
+          className="text-center col-8"
+          style={{ color: "#FFFFFF", fontFamily: "Poppins" }}
+        >
           Chrysus is a comprehensive decentralized application (dApp) that
           seamlessly integrates a range of financial services, such as loans,
           swaps, and more, to create a unified platform for its users. The
@@ -94,14 +97,16 @@ const Ecosystems = () => {
                 </div>
                 <div className="col-lg-6 about-content ps-lg-5 m-b30">
                   <div className="section-head">
-                    <H4> <h2
-                      className="title"
-                      style={{
-                        fontFamily: "Montserrat"
-                      }}
-                    >
-                      Get Started with ChrysusDAO
-                    </h2>
+                    <H4>
+                      {" "}
+                      <h2
+                        className="title"
+                        style={{
+                          fontFamily: "Montserrat",
+                        }}
+                      >
+                        Get Started with ChrysusDAO
+                      </h2>
                     </H4>
                     <p className="m-0 lh-base">
                       ChrysusDAO was founded with a simple mission of making
