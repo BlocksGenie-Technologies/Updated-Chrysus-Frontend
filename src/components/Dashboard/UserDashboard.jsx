@@ -3,14 +3,15 @@ import { H4 } from "../typography/h4";
 import { Dash, C, Ether, home, meta1 } from "../../assets";
 import { Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { updatAccount, } from "../../slices/web3ContractSlice";
+import { updatAccount } from "../../slices/web3ContractSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/store";
 import Utils from "../../utilities";
 
-
 const UserDashboard = () => {
   const dispatch = useAppDispatch();
-  const { web3, contract, accounts, Provider } = useAppSelector((state) => state.web3Connect);
+  const { web3, contract, accounts, Provider } = useAppSelector(
+    (state) => state.web3Connect,
+  );
   const [WalletAddress, setWalletAddress] = useState([]);
   const [transaction, settransaction] = useState([]);
   const [Alltransaction, setAlltransaction] = useState([]);
@@ -39,7 +40,7 @@ const UserDashboard = () => {
     }
   };
 
-  console.log("data pagination", data)
+  console.log("data pagination", data);
   // use effect
   useEffect(() => {
     if (data) {
@@ -49,13 +50,14 @@ const UserDashboard = () => {
 
   useEffect(() => {
     if (transaction) {
-      onClick(1)
+      onClick(1);
     }
   }, [transaction]);
 
-
   // paggination
-  let paggination = Array(Math.ceil(data.length / sort)).fill().map((_, i) => i + 1);
+  let paggination = Array(Math.ceil(data.length / sort))
+    .fill()
+    .map((_, i) => i + 1);
 
   // Active paggination & chage data
   const onClick = (i) => {
@@ -74,7 +76,6 @@ const UserDashboard = () => {
     }
   });
 
-
   const validMethodIDs = [
     "0x26c01303",
     "0x350c35e9",
@@ -86,23 +87,25 @@ const UserDashboard = () => {
     "0x22867d78",
     "0x00f714ce",
     "0xa694fc3a",
-    "0xc6066272"
+    "0xc6066272",
   ];
-
-
 
   useEffect(() => {
     if (WalletAddress) {
       const fetchTransaction = async () => {
         try {
-          fetch(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`)
-            .then(response => {
-              return response.json()
+          fetch(
+            `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=0x9bBD6C78a59db71f5a6Bf883f9d108474e980794&sort=desc&apikey=BI5FBJREUF3GEDF7Q3UTU3CFGNCE15YNMH`,
+          )
+            .then((response) => {
+              return response.json();
             })
-            .then(data => {
-              const transactions = data.result.filter((transaction) => validMethodIDs.includes(transaction.methodId));
-              settransaction(transactions)
-            })
+            .then((data) => {
+              const transactions = data.result.filter((transaction) =>
+                validMethodIDs.includes(transaction.methodId),
+              );
+              settransaction(transactions);
+            });
         } catch (err) {
           console.log(err);
         }
@@ -110,7 +113,6 @@ const UserDashboard = () => {
       fetchTransaction();
     }
   }, []);
-
 
   console.log("All transaction", Alltransaction);
   console.log("transaction", transaction);
@@ -171,7 +173,6 @@ const UserDashboard = () => {
     },
   ];
 
-
   return (
     <div className="min-h-screen">
       <div className="row mt-4">
@@ -185,8 +186,7 @@ const UserDashboard = () => {
             }}
           >
             <div className="mt-2 text-center">
-              <H4>
-              </H4>
+              <H4></H4>
             </div>
             <div className="card-body">
               <div className="row sp20 mb-2 align-items-center">
@@ -233,16 +233,36 @@ const UserDashboard = () => {
                   <thead>
                     <tr>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">ASSET</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          ASSET
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">BALANCE</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          BALANCE
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white">USD</span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          USD
+                        </span>
                       </td>
                       <td>
-                        <span style={{ color: "#B79841" }} className="text-white"> </span>
+                        <span
+                          style={{ color: "#B79841" }}
+                          className="text-white"
+                        >
+                          {" "}
+                        </span>
                       </td>
                     </tr>
                   </thead>
@@ -457,77 +477,75 @@ const UserDashboard = () => {
                         id="status_wrapper"
                         className="dataTables_wrapper no-footer"
                       >
-                        <div className="" style={{marginRight:"610px"}}>
+                        <div className="" style={{ marginRight: "610px" }}>
                           <table
                             id="example"
                             className="table display dataTable no-footer"
                             style={{ minWidth: "845px" }}
                           >
                             <thead>
-                              <tr className="text-white" style={{textAlign: "center"}}>
+                              <tr
+                                className="text-white"
+                                style={{ textAlign: "center" }}
+                              >
                                 <th>Date</th>
                                 <th>Action</th>
                                 <th>Transaction</th>
                               </tr>
                             </thead>
                             <tbody className="text-white">
-                              {transaction.length === 0 ? (
-                                ""
-                              ) : (transaction.map((item, index) => (
-                                <tr key={index} style={{textAlign: "center"}}>
-                                  <td>{(new Date(item.timeStamp * 1000)).toDateString()}</td>
-                                  <td>
-                                    {item.methodId == 0x26c01303 ? (
-                                      <a>Liquidity</a>
-                                    ) : (item.methodId == 0x350c35e9 ? (
-                                      <a>WithdrawCollateral</a>
-                                    ) : (
-                                      item.methodId == 0xa5d5db0c ? (
-                                        <a>DepositCollateral</a>
-                                      ) : (
-                                        item.methodId == 0x1d7ce898 ? (
+                              {transaction.length === 0
+                                ? ""
+                                : transaction.map((item, index) => (
+                                    <tr
+                                      key={index}
+                                      style={{ textAlign: "center" }}
+                                    >
+                                      <td>
+                                        {new Date(
+                                          item.timeStamp * 1000,
+                                        ).toDateString()}
+                                      </td>
+                                      <td>
+                                        {item.methodId == 0x26c01303 ? (
+                                          <a>Liquidity</a>
+                                        ) : item.methodId == 0x350c35e9 ? (
+                                          <a>WithdrawCollateral</a>
+                                        ) : item.methodId == 0xa5d5db0c ? (
+                                          <a>DepositCollateral</a>
+                                        ) : item.methodId == 0x1d7ce898 ? (
                                           <a>ProposeVote</a>
+                                        ) : item.methodId == 0xb1884744 ? (
+                                          <a>Lend</a>
+                                        ) : item.methodId == 0x4b3fd148 ? (
+                                          <a>Borrow</a>
+                                        ) : item.methodId == 0x22867d78 ? (
+                                          <a>Repay</a>
+                                        ) : item.methodId == 0x00f714ce ? (
+                                          <a>Withdraw</a>
+                                        ) : item.methodId == 0xa694fc3a ? (
+                                          <a>Stake</a>
+                                        ) : item.methodId == 0xc6066272 ? (
+                                          <a>WithdrawStake</a>
                                         ) : (
-                                          item.methodId == 0xb1884744 ? (
-                                            <a>Lend</a>
-                                          ) : (
-                                            item.methodId == 0x4b3fd148 ? (
-                                              <a>Borrow</a>
-                                            ) : (
-                                              item.methodId == 0x22867d78 ? (
-                                                <a>Repay</a>
-                                              ) : (
-                                                item.methodId == 0x00f714ce ? (
-                                                  <a>Withdraw</a>
-                                                ) : (
-                                                  item.methodId == 0xa694fc3a ? (
-                                                    <a>Stake</a>
-                                                  ) : (
-                                                    item.methodId == 0xc6066272 ? (
-                                                      <a>WithdrawStake</a>
-                                                    ) : (<></>)
-                                                  )
-                                                )
-                                              )
-                                            )
-                                          )
-                                        )
-                                      )
-                                    )
-                                    )
-                                    }
-                                  </td>
-                                  <td>
-                                    <Link className="tranlink" to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
-                                      target="_blank" style={{ textDecorationLine: "underline" }}>
-                                      More details
-                                    </Link>
-                                  </td>
-                                  <td>
-                                  </td>
-                                </tr>
-                              )))
-                              }
+                                          <></>
+                                        )}
+                                      </td>
+                                      <td>
+                                        <Link
+                                          className="tranlink"
+                                          to={`https://sepolia.etherscan.io/tx/${item.blockHash}`}
+                                          target="_blank"
+                                          style={{
+                                            textDecorationLine: "underline",
+                                          }}
+                                        >
+                                          More details
+                                        </Link>
+                                      </td>
+                                      <td></td>
+                                    </tr>
+                                  ))}
                             </tbody>
                           </table>
                         </div>
@@ -539,8 +557,10 @@ const UserDashboard = () => {
                               : data.length}{" "}
                             of {data.length} entries
                           </div>
-                          <div className="dataTables_paginate paging_simple_numbers mb-0"
-                            id="application-tbl1_paginate">
+                          <div
+                            className="dataTables_paginate paging_simple_numbers mb-0"
+                            id="application-tbl1_paginate"
+                          >
                             <Link
                               className="paginate_button previous text-white mt-2"
                               onClick={() =>
@@ -564,14 +584,15 @@ const UserDashboard = () => {
                               </i>
                             </Link>
                             <span className="text-white">
-                              <Link style={{ fontSize: "10px", }}>
+                              <Link style={{ fontSize: "10px" }}>
                                 {activePag.current + 1}
                               </Link>
                             </span>
 
                             <Link
                               className="paginate_button next text-white mt-2"
-                              onClick={() => activePag.current + 1 < paggination.length &&
+                              onClick={() =>
+                                activePag.current + 1 < paggination.length &&
                                 onClick(activePag.current + 1)
                               }
                             >
@@ -605,5 +626,3 @@ const UserDashboard = () => {
   );
 };
 export default UserDashboard;
-
-
