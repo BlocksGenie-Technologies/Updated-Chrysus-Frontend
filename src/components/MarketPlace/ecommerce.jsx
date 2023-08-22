@@ -2,14 +2,19 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import scrollreveal from "scrollreveal";
 import { H4 } from "../typography/h4";
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
-
+import { Fragment, useState } from "react";
+import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  FunnelIcon,
+  MinusIcon,
+  PlusIcon,
+  Squares2X2Icon,
+} from "@heroicons/react/20/solid";
 
 const Ecommerce = () => {
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   useEffect(() => {
     const sr = scrollreveal({
       origin: "bottom",
@@ -26,69 +31,69 @@ const Ecommerce = () => {
       {
         opacity: 0,
         interval: 100,
-      }
+      },
     );
   }, []);
 
   const sortOptions = [
-    { name: 'Most Popular', href: '#', current: true },
-    { name: 'Best Rating', href: '#', current: false },
-    { name: 'Newest', href: '#', current: false },
-    { name: 'Price: Low to High', href: '#', current: false },
-    { name: 'Price: High to Low', href: '#', current: false },
-  ]
+    { name: "Most Popular", href: "#", current: true },
+    { name: "Best Rating", href: "#", current: false },
+    { name: "Newest", href: "#", current: false },
+    { name: "Price: Low to High", href: "#", current: false },
+    { name: "Price: High to Low", href: "#", current: false },
+  ];
   const subCategories = [
-    { name: 'Totes', href: '#' },
-    { name: 'Backpacks', href: '#' },
-    { name: 'Travel Bags', href: '#' },
-    { name: 'Hip Bags', href: '#' },
-    { name: 'Laptop Sleeves', href: '#' },
-  ]
+    { name: "Totes", href: "#" },
+    { name: "Backpacks", href: "#" },
+    { name: "Travel Bags", href: "#" },
+    { name: "Hip Bags", href: "#" },
+    { name: "Laptop Sleeves", href: "#" },
+  ];
   const filters = [
     {
-      id: 'color',
-      name: 'Color',
+      id: "color",
+      name: "Color",
       options: [
-        { value: 'white', label: 'White', checked: false },
-        { value: 'beige', label: 'Beige', checked: false },
-        { value: 'blue', label: 'Blue', checked: true },
-        { value: 'brown', label: 'Brown', checked: false },
-        { value: 'green', label: 'Green', checked: false },
-        { value: 'purple', label: 'Purple', checked: false },
+        { value: "white", label: "White", checked: false },
+        { value: "beige", label: "Beige", checked: false },
+        { value: "blue", label: "Blue", checked: true },
+        { value: "brown", label: "Brown", checked: false },
+        { value: "green", label: "Green", checked: false },
+        { value: "purple", label: "Purple", checked: false },
       ],
     },
     {
-      id: 'category',
-      name: 'Category',
+      id: "category",
+      name: "Category",
       options: [
-        { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-        { value: 'sale', label: 'Sale', checked: false },
-        { value: 'travel', label: 'Travel', checked: true },
-        { value: 'organization', label: 'Organization', checked: false },
-        { value: 'accessories', label: 'Accessories', checked: false },
+        { value: "new-arrivals", label: "New Arrivals", checked: false },
+        { value: "sale", label: "Sale", checked: false },
+        { value: "travel", label: "Travel", checked: true },
+        { value: "organization", label: "Organization", checked: false },
+        { value: "accessories", label: "Accessories", checked: false },
       ],
     },
     {
-      id: 'size',
-      name: 'Size',
+      id: "size",
+      name: "Size",
       options: [
-        { value: '2l', label: '2L', checked: false },
-        { value: '6l', label: '6L', checked: false },
-        { value: '12l', label: '12L', checked: false },
-        { value: '18l', label: '18L', checked: false },
-        { value: '20l', label: '20L', checked: false },
-        { value: '40l', label: '40L', checked: true },
+        { value: "2l", label: "2L", checked: false },
+        { value: "6l", label: "6L", checked: false },
+        { value: "12l", label: "12L", checked: false },
+        { value: "18l", label: "18L", checked: false },
+        { value: "20l", label: "20L", checked: false },
+        { value: "40l", label: "40L", checked: true },
       ],
     },
-  ]
+  ];
 
   function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(" ");
   }
 
   return (
     <Section className=" min-h-screen">
-      <div >
+      <div>
         <ul className="flex">
           <li className="flex-1 mr-2">
             <Menu as="div" className="relative inline-block text-left">
@@ -119,9 +124,11 @@ const Ecommerce = () => {
                           <a
                             href={option.href}
                             className={classNames(
-                              option.current ? 'font-medium text-gray-900' : 'text-gray-500',
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm'
+                              option.current
+                                ? "font-medium text-gray-900"
+                                : "text-gray-500",
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm",
                             )}
                           >
                             {option.name}
@@ -181,7 +188,13 @@ const Ecommerce = () => {
                   className="block w-full px-4 py-2 text-purple-700 bg-white border rounded-full focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                   placeholder="Search..."
                 />
-                <button className="px-4 text-white rounded-full " style={{background: "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424"}}>
+                <button
+                  className="px-4 text-white rounded-full "
+                  style={{
+                    background:
+                      "linear-gradient(270deg, #EDC452 0.26%, #846424 99.99%, #846424 100%), #846424",
+                  }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-5 h-5"
@@ -202,7 +215,10 @@ const Ecommerce = () => {
           </li>
           <li className="text-center flex-1">
             {/* <a className="block py-2 px-4 text-gray-400 cursor-not-allowed" href="#">Disabled Item</a> */}
-            <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
+            <button
+              type="button"
+              className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
+            >
               <span className="sr-only">View grid</span>
               <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -225,7 +241,8 @@ const Ecommerce = () => {
               backgroundColor: "#211f21",
               borderRadius: "16px",
               color: "#846424",
-            }}>
+            }}
+          >
             {/* <div className="card-body pt-4">
                 <div className="w-100">
                   <div className="d-flex flex-row align-items-center justify-content-between mb-4">
@@ -271,9 +288,7 @@ const Ecommerce = () => {
                     color: "#846424",
                   }}
                 >
-                  <div className="card-body">
-                    CHC Project MarketPlace
-                  </div>
+                  <div className="card-body">CHC Project MarketPlace</div>
                 </div>
               </div>
             </div>
@@ -516,16 +531,16 @@ const Ecommerce = () => {
     //     </div>
     //   </Section>
     // </div>
-  )
-}
+  );
+};
 
-export default Ecommerce
+export default Ecommerce;
 
 const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
-  background-color:  white;
+  background-color: white;
   .grid {
     display: flex;
     flex-direction: column;
