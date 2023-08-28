@@ -7,7 +7,7 @@ import Utils from "../utilities.js";
 
 const Overview = () => {
   const [data, setData] = useState(
-    document.querySelectorAll("#status_wrapper tbody tr")
+    document.querySelectorAll("#status_wrapper tbody tr"),
   );
 
   const sort = 6;
@@ -30,7 +30,6 @@ const Overview = () => {
     setData(document.querySelectorAll("#status_wrapper tbody tr"));
   }, [test]);
 
-
   // paggination
   let paggination = Array(Math.ceil(data.length / sort))
     .fill()
@@ -47,7 +46,6 @@ const Overview = () => {
     Utils.getTotalStakeAmount().then(function (data) {
       setTotalStake(Number(data) / 1e18);
     });
-
   }, [ethereum]);
 
   return (
@@ -71,8 +69,10 @@ const Overview = () => {
                   <h5 className="title">Staked</h5>
                 </div>
               </div>
-              <p className="mb-0 amount">Tokens {""}
-                <span className="text-white  ml-2">{TotalStake}</span></p>
+              <p className="mb-0 amount">
+                Tokens {""}
+                <span className="text-white  ml-2">{TotalStake}</span>
+              </p>
             </div>
           </div>
           <div
@@ -92,8 +92,10 @@ const Overview = () => {
                   <h5 className="title">Lock time</h5>
                 </div>
               </div>
-              <p className="mb-0 amount">Average Time {""}
-                <a className="text-white ml-2">30Days</a></p>
+              <p className="mb-0 amount">
+                Average Time {""}
+                <a className="text-white ml-2">30Days</a>
+              </p>
             </div>
           </div>
         </div>
@@ -177,8 +179,9 @@ const Overview = () => {
                                     fontSize: "10px",
                                   }}
                                   key={i}
-                                  className={`paginate_button  ${activePag.current === i ? "current" : ""
-                                    } `}
+                                  className={`paginate_button  ${
+                                    activePag.current === i ? "current" : ""
+                                  } `}
                                   onClick={() => onClick(i)}
                                 >
                                   {number}
